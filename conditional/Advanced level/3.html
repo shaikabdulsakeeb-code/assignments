@@ -1,0 +1,22 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3rd problem</title>
+</head>
+<body>
+    <script>
+        var a1=+prompt("Enter the first angle:")
+        var a2=+prompt("Enter the second angle:")
+        var a3=+prompt("Enter the third angle:")
+        var s=a1+a2+a3
+        var rese=(a1==60 && a2==60 && a3==60)?true:false
+        var resi=(a1==a2 || a2==a3 || a1==a3)?true:false
+        var ress=(a1!=a2 && a2!=a3 && a1!=a3)?true:false
+        var res=(s==180)?(rese?"Equilateral Triangle":resi?"Isosceles Triangle":ress?"Scalene Triangle":""):"Not a Triangle"
+        document.write(res)
+    </script>
+</body>
+</html>

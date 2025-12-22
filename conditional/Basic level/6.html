@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>6th problem</title>
+</head>
+<body>
+    <script>
+     var num1=+prompt("Enter the 1st number:")
+     var num2=+prompt("Enter the 2nd number:")
+     var num3=+prompt("Enter the 3rd number:")
+     var res=(num1 < num2 && num1 < num3) ? num1 :
+             (num2 < num1 && num2 < num3) ? num2 :
+             (num3 < num1 && num3 < num2) ? num3 : "Three are equal"
+    res!="Three are equal"?document.write(res+" is least among three "+num1+" , "+num2+" and "+num3):document.write(res)
+    </script>
+</body>
+</html>

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7th problem</title>
+</head>
+<body>
+    <script>
+        var ch=prompt("Enter the character")[0]
+        var res=((ch>='a' && ch<='z') || (ch>='A' && ch<='Z'))
+        ?(ch+" is an alphabet")
+        :((ch >= 0 && ch <=  9) ? (ch+" is a digit"):(ch+" is a special character"))
+        document.write(res)
+    </script>
+</body>
+</html>

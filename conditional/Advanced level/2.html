@@ -1,0 +1,19 @@
+<!-- Input angles of a triangle and check whether the triangle is valid.  -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2nd problem</title>
+</head>
+<body>
+    <script>
+        var a1=+prompt("Enter the first angle:")
+        var a2=+prompt("Enter the second angle:")
+        var a3=+prompt("Enter the third angle:")
+        var s=a1+a2+a3
+        var res=(s==180)?((a1>0 && a2>0 && a3>0)?"Yes it is Triangle":"Not a Triangle"):"Not a Triangle"
+        document.write(res+" and its angles : "+a1+" , "+a2+" , "+a3)
+    </script>
+</body>
+</html>

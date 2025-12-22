@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1st problem</title>
+</head>
+<body>
+    <script>
+        var y=+prompt("Enter the year")
+        var m=+prompt("Enter the month")
+        var d=+prompt("Enter the date")
+        var resy=(y>0)?true:false
+        var resm=(m>=1 && m<=12)?true:false
+        var resd= (m == 1 || m == 3 || m == 5 || m == 7 || m == 8 || m == 10 || m == 12)
+                ? (d >= 1 && d <= 31)
+            : (m == 4 || m == 6 || m == 9 || m == 11)
+                ? (d >= 1 && d <= 30)
+            : (m == 2)
+                ? (y%4==0?(d >= 1 && d <= 29):(d >= 1 && d <= 28))
+            : false;
+        var res=(resy && resm && resd)?("Yes "+d+"/"+m+"/"+y+" is valid date"):("No "+d+"/"+m+"/"+y+" is not a valid date")
+        document.write(res)
+    </script>
+</body>
+</html>
+

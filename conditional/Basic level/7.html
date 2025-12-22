@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7th problem</title>
+</head>
+<body>
+    <script>
+        var num1 = +prompt("Enter 1st number:")
+        var num2 = +prompt("Enter 2nd number:")
+        var num3 = +prompt("Enter 3rd number:")
+
+        var res =
+            (num1 <= num2 && num1 <= num3) ? (
+                (num2 <= num3 ? (num1 + ", " + num2 + ", " + num3) : (num1 + ", " + num3 + ", " + num2))
+            ) :
+            (num2 <= num1 && num2 <= num3) ? (
+                (num1 <= num3 ? (num2 + ", " + num1 + ", " + num3) : (num2 + ", " + num3 + ", " + num1))
+            ) :
+            (
+                (num1 <= num2 ? (num3 + ", " + num1 + ", " + num2) : (num3 + ", " + num2 + ", " + num1))
+            )
+
+        document.write("Ascending order of given three numbers = " + res)
+    </script>
+</body>
+</html>
