@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1. Reverse of a number using toString, split, reverse, and join methods.</title>
+</head>
+<body>
+    <script>
+        var n=+prompt("Enter the Number")
+        document.write("Number  = "+n)
+        var s=String(n)
+        var ar=s.split('')
+        var br=ar.reverse()
+        var n=br.join('')
+        document.write("<br>Number after reversing = "+n)
+    </script>
+</body>
+</html>

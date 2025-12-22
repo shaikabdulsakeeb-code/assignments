@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intermediate level problems</title>
+</head>
+<body>
+    <script>
+        const fruits = ["Apple", "Banana", "Cherry", "Mango", "Orange", "Grapes"];
+        // 6. Use a for loop to reverse each fruit name (e.g., "Apple" → "elppA").
+        // document.write("Original array = "+fruits)
+        // for(var i=0;i<fruits.length;i++){
+        //     var rev=fruits[i].split('')
+        //     var rev=rev.reverse()
+        //     fruits[i]=rev.join('')
+        // }
+        // document.write("<br>reversing each fruit name array = "+fruits)
+        // 7. Use a for loop to create a new array containing fruit names in uppercase.
+        var newarray=[]
+        var j=0
+        for(var i=0;i<fruits.length;i++){
+            newarray[j]=fruits[i].toUpperCase()
+            j++
+        }
+        document.write("<br>New array containing fruit names in uppercase = "+newarray+"<br>")
+        // 8. Use a for loop to add "Delicious " before each fruit name (e.g., "Delicious Apple").
+        // for(var i=0;i<fruits.length;i++){
+        //      fruits[i]="Delicious "+fruits[i]
+        //  }
+        //  document.write("<br>Array = "+fruits)
+        // 9. Use a for loop to find how many fruits have more than 5 letters.
+        for(var i=0;i<fruits.length;i++){
+            if(fruits[i].length>5){
+                document.write(fruits[i]+" has more than 5 letters<br>")
+            }
+        }
+        // 10. Use a for loop to remove all fruits that contain the letter "o".
+        for(var i=0;i<fruits.length;i++){
+            if(fruits[i].includes("o")){
+                fruits.splice(i,1)
+            }
+        }
+        document.write("<br>After deleting the fruits containing the letter 'o' = "+fruits)
+        
+    </script>
+</body>
+</html>

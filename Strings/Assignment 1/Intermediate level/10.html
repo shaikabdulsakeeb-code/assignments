@@ -1,0 +1,19 @@
+<!-- 10. Write a program to eliminate all numeric characters from a string. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>10. Write a program to eliminate all numeric characters from a string.</title>
+</head>
+<body>
+    <script>
+       var s = prompt("Enter the String")
+       document.write("Original string = "+s)
+       var result = s.replace(/[0-9]/g,"")
+       var s=result
+       document.write("<br>After removing all numeric characters = "+s)
+
+    </script>
+</body>
+</html>

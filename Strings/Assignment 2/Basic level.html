@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic level problems</title>
+</head>
+<body>
+    <script>
+        const fruits = ["Apple", "Banana", "Cherry", "Mango", "Orange", "Grapes"];
+        // 1. Use a for loop to print each fruit in the fruits array.
+        for(fruit of fruits){
+            document.write(fruit+" ")
+        }
+        document.write("<br>")
+        // 2. Use a for loop to print the index and value of each fruit.
+        var cnt=0
+        for(var i=0;i<fruits.length;i++){
+            document.write(i+" "+fruits[i]+"<br>")
+            cnt++
+        }
+        // 3. Use a for loop to count how many fruits are in the array.
+        document.write("No.of fruits in array = "+cnt)
+        document.write("<br>")
+        // 4. Use a for loop to find and print the longest fruit name.
+        var max=fruits[0]
+        for(var i=0;i<fruits.length;i++){
+            if(fruits[i].length>max.length){
+                max=fruits[i]
+            }
+        }
+        document.write("Longest fruit name in array = "+max)
+        document.write("<br>")
+        document.write("fruit names that contain letter 'a' = ")
+        // 5. Use a for loop to print only fruits that contain the letter "a".
+         for(var i=0;i<fruits.length;i++){
+            if(fruits[i].includes("a")){
+                document.write(fruits[i]+" ")
+            }
+        }
+    </script>
+</body>
+</html>

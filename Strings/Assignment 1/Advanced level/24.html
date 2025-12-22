@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>24. Write a program to add hyphens (-) between groups of 4 digits in a credit card
+number.</title>
+</head>
+<body>
+    <script>
+//         24. Write a program to add hyphens (-) between groups of 4 digits in a credit card
+// number.
+        var n=prompt("Enter credit card number")
+        var ar=n.split('')
+        var exp=/[0-9]/g
+        var firstcn
+        for(var i=0;i<ar.length;i++){
+            if(ar[i].match(exp)){
+                firstcn=true
+            }
+            else{
+                firstcn=false
+            }
+        }
+        if(firstcn && ar.length==16){
+            ar.splice(4,0,'-')
+            ar.splice(9,0,'-')
+            ar.splice(14,0,'-')
+            document.write("Credit card number = "+ar.join(''))
+        }
+        else{
+            document.write("No "+ar.join('')+" is not a valid credit card number.")
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>37th problem</title>
+</head>
+<body>
+    <script>
+        var n=+prompt("Enter the number")
+        var a=0,b=1,c 
+        while(a<n){
+            c=a+b
+            a=b
+            b=c
+        }
+        document.write((a===n)?n+" is fibonacci<br>":n+" is not a fibonacci<br>")
+        document.write((Number.isInteger(Math.sqrt((5*n*n)-4)) || Number.isInteger(Math.sqrt((5*n*n)+4)))?n+" is fibonacci":n+" is not a fibonacci")
+    </script>
+</body>
+</html>

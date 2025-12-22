@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>44. Use a for loop to replace all vowels in animal names with "*".</title>
+</head>
+<body>
+    <script>
+         const animals = [
+        "Lion", "Tiger", "Elephant", "Giraffe", "Monkey", "Zebra",
+        "Kangaroo", "Panda", "Leopard", "Cheetah", "Rhinoceros",
+        "Hippopotamus", "Wolf", "Fox", "Deer", "Rabbit", "Squirrel",
+        "Crocodile", "Alligator", "Ostrich", "Peacock", "Eagle",
+        "Falcon", "Penguin", "Dolphin", "Shark", "Whale", "Octopus",
+        "Jellyfish", "Starfish"
+        ];
+        for(var i=0;i<animals.length;i++){
+            var temp=animals[i]
+            var newstr=""
+            for(j=0;j<temp.length;j++){
+                if(temp[j]=='a' || temp[j]=='e' || temp[j]=='i' || temp[j]=='o' || temp[j]=='u' 
+                || temp[j]=='A' || temp[j]=='E' || temp[j]=='I' || temp[j]=='O' || temp[j]=='U'){    
+                    newstr+="*"
+
+                }
+                else{
+                    newstr+=temp[j]
+                }
+            }
+            animals[i]=newstr
+            document.write(animals[i]+"<br>")
+        }
+
+    </script>
+</body>
+</html>

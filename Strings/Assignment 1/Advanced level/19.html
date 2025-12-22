@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>19. Write a program to take a 16-digit credit card number and replace the first 12 digits with X.</title>
+</head>
+<body>
+   <script>
+        // 19. Write a program to take a 16-digit credit card number and replace the first 12
+        // digits with X.     
+        var n=prompt("Enter credit card number")
+        var ar=n.split('')
+        for(var i=0;i<12;i++){
+            ar[i]='X'
+        }
+        var n=ar.join('')
+        document.write("Credit card number = "+n)
+</script> 
+    
+</body>
+</html>

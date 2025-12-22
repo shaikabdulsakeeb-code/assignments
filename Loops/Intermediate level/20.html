@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>20th problem</title>
+</head>
+<body>
+    <script>
+        var n1=+prompt("Enter the number")
+        var n2=+prompt("Enter the number")
+        var n3=+prompt("Enter the number")
+        var n4=+prompt("Enter the number")
+        var n5=+prompt("Enter the number")
+        var max
+        while (true) {
+            if (n1 >= n2 && n1 >= n3 && n1 >= n4 && n1 >= n5) {
+                max = n1
+                break
+            }
+            if (n2 >= n1 && n2 >= n3 && n2 >= n4 && n2 >= n5) {
+                max = n2
+                break
+            }
+            if (n3 >= n1 && n3 >= n2 && n3 >= n4 && n3 >= n5) {
+                max = n3
+                break
+            }
+            if (n4 >= n1 && n4 >= n2 && n4 >= n3 && n4 >= n5) {
+                max = n4
+                break
+            }
+            if (n5 >= n1 && n5 >= n2 && n5 >= n3 && n5 >= n4) {
+                max = n5
+                break
+            }
+        }
+        document.write("Maximum number="+max)
+        var min
+        while (true) {
+            if (n1 <= n2 && n1 <= n3 && n1 <= n4 && n1 <= n5) {
+                min = n1
+                break
+            }
+            if (n2 <= n1 && n2 <= n3 && n2 <= n4 && n2 <= n5) {
+                min = n2
+                break
+            }
+            if (n3 <= n1 && n3 <= n2 && n3 <= n4 && n3 <= n5) {
+                min = n3
+                break
+            }
+            if (n4 <= n1 && n4 <= n2 && n4 <= n3 && n4 <= n5) {
+                min = n4
+                break
+            }
+            if (n5 <= n1 && n5 <= n2 && n5 <= n3 && n5 <= n4) {
+                min = n5
+                break
+            }
+        }
+        document.write("<br>Minimum number="+min)
+    </script>
+</body>
+</html>

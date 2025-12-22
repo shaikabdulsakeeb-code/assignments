@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>17. Write a program to print unique words and count repetitions in a string.</title>
+</head>
+<body>
+    <script>
+        var s=prompt("Enter the string")
+        document.write("String = "+s+"<br>")
+        var ar=s.split(' ')
+        var uniq=[]
+        for(var i=0;i<ar.length;i++){
+            if(uniq.indexOf(ar[i])==-1){
+                uniq.push(ar[i])
+            }
+        }
+       for (var i = 0; i < uniq.length; i++) {
+            var cnt = 0;
+            for (var j = 0; j < ar.length; j++) {
+                if (uniq[i] == ar[j]) {
+                    cnt++;
+                }
+            }
+            document.write(uniq[i] + " = " + cnt + "<br>");
+        }
+    </script>
+</body>
+</html>

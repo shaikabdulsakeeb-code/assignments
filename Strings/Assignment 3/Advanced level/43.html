@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>43. Use a for loop to split each animal name into an array of characters.</title>
+</head>
+<body>
+    <script>
+        const animals = [
+        "Lion", "Tiger", "Elephant", "Giraffe", "Monkey", "Zebra",
+        "Kangaroo", "Panda", "Leopard", "Cheetah", "Rhinoceros",
+        "Hippopotamus", "Wolf", "Fox", "Deer", "Rabbit", "Squirrel",
+        "Crocodile", "Alligator", "Ostrich", "Peacock", "Eagle",
+        "Falcon", "Penguin", "Dolphin", "Shark", "Whale", "Octopus",
+        "Jellyfish", "Starfish"
+        ];
+        for(var i=0;i<animals.length;i++){
+            var temp=animals[i]
+            var chararray=[]
+            for(var j=0;j<temp.length;j++){
+                chararray.push(temp[j])
+            }
+            document.write(animals[i]+" =  ["+chararray+"]<br>")
+        }        
+    </script>
+</body>
+</html>

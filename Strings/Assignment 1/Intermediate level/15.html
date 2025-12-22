@@ -1,0 +1,25 @@
+<!-- 15. Eliminate duplicate characters in a given string. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>15. Eliminate duplicate characters in a given string.</title>
+</head>
+<body>
+    <script>
+        var s=prompt("Enter the string")
+        document.write("String = "+s)
+        var ar=s.split('')
+        var uq=[]
+        for(var i=0;i<ar.length;i++){
+            if(uq.indexOf(ar[i])==-1){
+                uq.push(ar[i])
+            }
+        }
+        var s=uq.join('')
+        document.write("<br>After eliminating the duplicate characters = "+s)
+
+    </script>
+</body>
+</html>

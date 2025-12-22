@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sum of even and odd numbers between two given numbers</title>
+</head>
+<body>
+    <script>
+        n1=+prompt("Enter the 1st number")
+        n2=+prompt("Enter the 2nd number")
+        var sum_e=0
+        var sum_o=0
+        for(var i=n1;i<=n2;i++){
+            if(i%2==0){
+                sum_e=sum_e+i
+            }
+            else{
+                sum_o=sum_o+i
+            }
+        }
+        document.write("The sum of even numbers between "+n1+" and "+n2+" = "+sum_e)
+        document.write("<br>The sum of odd numbers between "+n1+" and "+n2+" = "+sum_o)
+    </script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>42. Use a for loop to find all animals that contain at least three vowels.</title>
+</head>
+<body>
+    <script>
+         const animals = [
+        "Lion", "Tiger", "Elephant", "Giraffe", "Monkey", "Zebra",
+        "Kangaroo", "Panda", "Leopard", "Cheetah", "Rhinoceros",
+        "Hippopotamus", "Wolf", "Fox", "Deer", "Rabbit", "Squirrel",
+        "Crocodile", "Alligator", "Ostrich", "Peacock", "Eagle",
+        "Falcon", "Penguin", "Dolphin", "Shark", "Whale", "Octopus",
+        "Jellyfish", "Starfish"
+        ];
+        document.write("Animal names having atleast 3 vowels = <br>")
+        for(var i=0;i<animals.length;i++){
+            var cnt=0
+            var temp=animals[i]
+            for(j=0;j<temp.length;j++){
+                if(temp[j]=='a' || temp[j]=='e' || temp[j]=='i' || temp[j]=='o' || temp[j]=='u' 
+                || temp[j]=='A' || temp[j]=='E' || temp[j]=='I' || temp[j]=='O' || temp[j]=='U'){
+                     
+                    cnt++
+
+                }
+            }
+            if(cnt>=3){
+                document.write(animals[i]+"<br>")
+            }
+        }
+
+
+    </script>
+</body>
+</html>

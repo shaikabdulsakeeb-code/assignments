@@ -1,0 +1,20 @@
+<!-- 16. Write a program to print all words in a string in alphabetical order. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>16. Write a program to print all words in a string in alphabetical order.</title>
+</head>
+<body>
+    <script>
+        var s=prompt("Enter the sentence")
+        document.write(s)
+        var s=s.toLowerCase()
+        var ar=s.split(' ')
+        var sr=ar.sort()
+        var s=sr.join(' ')
+        document.write("<br>Words in a string in alphabetical order = "+s)
+    </script>
+</body>
+</html>

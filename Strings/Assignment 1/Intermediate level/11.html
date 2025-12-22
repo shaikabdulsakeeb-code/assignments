@@ -1,0 +1,16 @@
+<!-- 11. Write a program to print only numeric characters from a string. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>11. Write a program to print only numeric characters from a string.</title>
+</head>
+<body>
+    <script>
+       var s = prompt("Enter the String");
+       var result = s.match(/[0-9]/g).join("");
+       document.write(result);
+    </script>
+</body>
+</html>

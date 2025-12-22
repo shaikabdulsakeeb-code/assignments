@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>55. Use a for loop to create an array where the first letter of each animal is capitalized.
+</title>
+</head>
+<body>
+    <script>
+        const animals = [
+            "lion", "tiger", "elephant", "giraffe", "monkey", "zebra",
+            "kangaroo", "panda", "leopard", "cheetah", "rhinoceros",
+            "hippopotamus", "wolf", "fox", "deer", "rabbit", "squirrel",
+            "crocodile", "alligator", "ostrich", "peacock", "eagle",
+            "falcon", "penguin", "dolphin", "shark", "whale", "octopus",
+            "jellyfish", "starfish"
+        ];
+        var cap=[]
+        for(var i=0;i<animals.length;i++){
+            var word = animals[i];
+            var newWord = word.charAt(0).toUpperCase() + word.slice(1);
+            cap.push(newWord)
+        }
+        for(animal of cap){
+            document.write(animal+"<br>")
+        }
+
+    </script>
+</body>
+</html>

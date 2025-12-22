@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>57. Use a for loop to count how many animals have more consonants than vowels.</title>
+</head>
+<body>
+    <script>
+        const animals = [
+            "Lion", "Tiger", "Elephant", "Giraffe", "Monkey", "Zebra",
+            "Kangaroo", "Panda", "Leopard", "Cheetah", "Rhinoceros",
+            "Hippopotamus", "Wolf", "Fox", "Deer", "Rabbit", "Squirrel",
+            "Crocodile", "Alligator", "Ostrich", "Peacock", "Eagle",
+            "Falcon", "Penguin", "Dolphin", "Shark", "Whale", "Octopus",
+            "Jellyfish", "Starfish"
+        ];
+
+        var countAnimals = 0;
+
+        for (var i = 0; i < animals.length; i++) {
+            var word = animals[i].toLowerCase();
+            var vowels = 0;
+            var consonants = 0;
+
+            for (var j = 0; j < word.length; j++) {
+                var ch = word[j];
+
+                if (ch >= 'a' && ch <= 'z') {
+                    if (ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u') {
+                        vowels++;
+                    } else {
+                        consonants++;
+                    }
+                }
+            }
+
+            if (consonants > vowels) {
+                countAnimals++;
+            }
+        }
+
+        document.write("Animals with more consonants than vowels: " + countAnimals);
+    </script>
+</body>
+</html>

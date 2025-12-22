@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>58. Use a for loop to check if all animal names have at least one vowel.</title>
+</head>
+<body>
+    <script>
+        const animals = [
+            "Lion", "Tiger", "Elephant", "Giraffe", "Monkey", "Zebra",
+            "Kangaroo", "Panda", "Leopard", "Cheetah", "Rhinoceros",
+            "Hippopotamus", "Wolf", "Fox", "Deer", "Rabbit", "Squirrel",
+            "Crocodile", "Alligator", "Ostrich", "Peacock", "Eagle",
+            "Falcon", "Penguin", "Dolphin", "Shark", "Whale", "Octopus",
+            "Jellyfish", "Starfish"
+        ];
+
+        var allHaveVowel = true;
+
+        for (var i = 0; i < animals.length; i++) {
+            var word = animals[i].toLowerCase();
+            var hasVowel = false;
+
+            for (var j = 0; j < word.length; j++) {
+                var ch = word[j];
+
+                if (ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u') {
+                    hasVowel = true;
+                    break;
+                }
+            }
+
+            if (!hasVowel) {
+                allHaveVowel = false;
+                break;
+            }
+        }
+
+        if (allHaveVowel) {
+            document.write("All animal names have at least one vowel");
+        } else {
+            document.write("Not all animal names have a vowel");
+        }
+
+    </script>
+</body>
+</html>

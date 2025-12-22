@@ -1,0 +1,21 @@
+<!-- 12. Check if a given string is a valid Gmail ID. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>12. Check if a given string is a valid Gmail ID.</title>
+</head>
+<body>
+    <script>
+       var s = prompt("Enter the Email");
+       const gmailRegex = /^[a-zA-Z0-9._%+-]+@gmail\.com$/i;
+       if(s.match(gmailRegex)){
+        document.write("Yes , it is valid gmail")
+       }
+       else{
+           document.write("No , it is not a valid gmail")
+       }
+    </script>
+</body>
+</html>

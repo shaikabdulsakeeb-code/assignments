@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>53. Use a for loop to print animals sorted by their last letter.</title>
+</head>
+<body>
+   <script>
+        const animals = [
+        "Lion", "Tiger", "Elephant", "Giraffe", "Monkey", "Zebra",
+        "Kangaroo", "Panda", "Leopard", "Cheetah", "Rhinoceros",
+        "Hippopotamus", "Wolf", "Fox", "Deer", "Rabbit", "Squirrel",
+        "Crocodile", "Alligator", "Ostrich", "Peacock", "Eagle",
+        "Falcon", "Penguin", "Dolphin", "Shark", "Whale", "Octopus",
+        "Jellyfish", "Starfish"
+        ];
+        for (var i=0;i<animals.length-1;i++) {
+            for (var j=0;j<animals.length-1-i;j++) {
+                var last1=animals[j].charAt(animals[j].length-1).toLowerCase();
+                var last2=animals[j+1].charAt(animals[j+1].length-1).toLowerCase();
+                if (last1>last2) {
+                    var temp=animals[j];
+                    animals[j]=animals[j+1];
+                    animals[j+1]=temp;
+                }
+            }
+        }
+        for (var i=0;i<animals.length;i++) {
+            document.write(animals[i]+"<br>");
+        }
+
+   </script> 
+</body>
+</html>

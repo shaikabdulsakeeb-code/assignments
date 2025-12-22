@@ -1,0 +1,18 @@
+<!-- 13. Write a program to count all alphabets in a given string (not words). -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>13. Write a program to count all alphabets in a given string (not words).</title>
+</head>
+<body>
+    <script>
+        var s=prompt("Enter the string")
+        document.write("String = "+s)
+        var res=s.match(/[a-zA-Z]/g).join('')
+        var cnt=res.length
+        document.write("<br>No. of alphabets = "+cnt)
+    </script>
+</body>
+</html>

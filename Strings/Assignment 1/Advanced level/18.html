@@ -1,0 +1,24 @@
+<!-- 18. Write a program to replace all vowels in a string with 8. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>18. Write a program to replace all vowels in a string with 8.</title>
+</head>
+<body>
+    <script>
+        var s=prompt("Enter the string")
+        document.write("String = "+s)
+        var ar=s.split('')
+        var cr=['a','e','i','o','u','A','E','I','O','U']
+        for(i=0;i<ar.length;i++){
+            if(cr.includes(ar[i])){
+                ar[i]='8'
+            }
+        }
+        var s=ar.join('')
+        document.write("<br>String = "+s)
+    </script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>45. Use a for loop to find all animals whose names are palindromes.</title>
+</head>
+<body>
+    <script>
+        const animals = [
+        "Lion", "Tiger", "Elephant", "Giraffe", "Monkey", "Zebra",
+        "Kangaroo", "Panda", "Leopard", "Cheetah", "Rhinoceros",
+        "Hippopotamus", "Wolf", "Fox", "Deer", "Rabbit", "Squirrel",
+        "Crocodile", "Alligator", "Ostrich", "Peacock", "Eagle",
+        "Falcon", "Penguin", "Dolphin", "Shark", "Whale", "Octopus",
+        "Jellyfish", "Starfish","Aidemedia"
+        ];
+        for(var i=0;i<animals.length;i++){
+            var original=animals[i].toLowerCase()
+            var temp=original.split('')
+            var temp=temp.reverse()
+            var temp=temp.join('')
+            if(original==temp){
+                document.write(animals[i]+"<br>")
+            }
+        }
+    </script>
+</body>
+</html>
