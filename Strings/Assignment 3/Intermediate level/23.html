@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>23. Use a for loop to count how many animals have at least two vowels.</title>
+</head>
+<body>
+    <script>
+        const animals = [
+"Lion", "Tiger", "Elephant", "Giraffe", "Monkey", "Zebra",
+"Kangaroo", "Panda", "Leopard", "Cheetah", "Rhinoceros",
+"Hippopotamus", "Wolf", "Fox", "Deer", "Rabbit", "Squirrel",
+"Crocodile", "Alligator", "Ostrich", "Peacock", "Eagle",
+"Falcon", "Penguin", "Dolphin", "Shark", "Whale", "Octopus",
+"Jellyfish", "Starfish"
+];
+        var t=0
+        for(var i=0;i<animals.length;i++){
+            var cnt=0
+            for(var j=0;j<animals[i].length;j++){
+                var ch=animals[i][j]
+                if(ch=='a' || ch=='e' || ch=='i' || ch=='o' || ch=='u' || ch=='A' || ch=='E' || ch=='I' || ch=='O' || ch=='U'){
+                    cnt++
+                }
+                
+            }
+            if(cnt>=2){
+                    document.write(animals[i]+"<br>")
+                    t++
+            }
+        }
+        document.write("Total no .of animals with atleast 2 vowels = "+t)
+    </script>
+</body>
+</html>

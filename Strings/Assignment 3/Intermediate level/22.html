@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>22. Use a for loop to create an array of animals sorted by length.</title>
+</head>
+<body>
+    <script>
+        const animals = [
+"Lion", "Tiger", "Elephant", "Giraffe", "Monkey", "Zebra",
+"Kangaroo", "Panda", "Leopard", "Cheetah", "Rhinoceros",
+"Hippopotamus", "Wolf", "Fox", "Deer", "Rabbit", "Squirrel",
+"Crocodile", "Alligator", "Ostrich", "Peacock", "Eagle",
+"Falcon", "Penguin", "Dolphin", "Shark", "Whale", "Octopus",
+"Jellyfish", "Starfish"
+];
+        for (var i=0;i<animals.length;i++) {
+            for (var j=i+1;j<animals.length;j++) {
+                if (animals[i].length>animals[j].length) {
+                    var temp=animals[i];
+                    animals[i]=animals[j];
+                    animals[j]=temp;
+                }
+            }
+        }
+
+        document.write("Sorted by length:<br>");
+        for (var i=0;i<animals.length;i++) {
+            document.write(animals[i]+" ("+animals[i].length+")<br>");
+        }
+    </script>
+</body>
+</html>

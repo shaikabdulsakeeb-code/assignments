@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>21. Use a for loop to create a new array with "Animal: " added before each name.</title>
+</head>
+<body>
+    <script>
+        const animals = [
+"Lion", "Tiger", "Elephant", "Giraffe", "Monkey", "Zebra",
+"Kangaroo", "Panda", "Leopard", "Cheetah", "Rhinoceros",
+"Hippopotamus", "Wolf", "Fox", "Deer", "Rabbit", "Squirrel",
+"Crocodile", "Alligator", "Ostrich", "Peacock", "Eagle",
+"Falcon", "Penguin", "Dolphin", "Shark", "Whale", "Octopus",
+"Jellyfish", "Starfish"
+];
+        var newarraay=[]
+        for(var i=0;i<animals.length;i++){
+            newarraay.push(("Animal: "+animals[i]))
+        }
+        for(animal of newarraay){
+            document.write(animal+"<br>")
+        }
+    </script>
+</body>
+</html>

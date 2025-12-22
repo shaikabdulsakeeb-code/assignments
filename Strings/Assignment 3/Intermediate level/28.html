@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>28. Use a for loop to find the most frequent letter in all animal names.</title>
+</head>
+<body>
+<script>
+    const animals = [
+        "Lion", "Tiger", "Elephant", "Giraffe", "Monkey", "Zebra",
+        "Kangaroo", "Panda", "Leopard", "Cheetah", "Rhinoceros",
+        "Hippopotamus", "Wolf", "Fox", "Deer", "Rabbit", "Squirrel",
+        "Crocodile", "Alligator", "Ostrich", "Peacock", "Eagle",
+        "Falcon", "Penguin", "Dolphin", "Shark", "Whale", "Octopus",
+        "Jellyfish", "Starfish"
+    ];
+    var maxCount = 0
+    var maxLetter = ""
+    for (var ch = 97; ch <= 122; ch++) {
+        var letter = String.fromCharCode(ch)
+        var cnt = 0
+        for (var i = 0; i < animals.length; i++) {
+            var name = animals[i].toLowerCase()
+            for (var j = 0; j < name.length; j++) {
+                if (name[j] == letter) {
+                    cnt++
+                }
+            }
+        }
+        if (cnt > maxCount) {
+            maxCount = cnt
+            maxLetter = letter
+        }
+    }
+
+    document.write("Most frequent letter (all animals): " + maxLetter + "<br>")
+    document.write("Frequency: " + maxCount)
+</script>
+
+</body>
+</html>

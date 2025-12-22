@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>34. Use a for loop to find the animal with the most consecutive repeated letters.</title>
+</head>
+<body>
+<script>
+    const animals = [
+        "Lion", "Tiger", "Elephant", "Giraffe", "Monkey", "Zebra",
+        "Kangaroo", "Panda", "Leopard", "Cheetah", "Rhinoceros",
+        "Hippopotamus", "Wolf", "Fox", "Deer", "Rabbit", "Squirrel",
+        "Crocodile", "Alligator", "Ostrich", "Peacock", "Eagle",
+        "Falcon", "Penguin", "Dolphin", "Shark", "Whale", "Octopus",
+        "Jellyfish", "Starfish"
+    ];
+
+    var maxRepeat = 1
+    var result = []
+
+    for (var i = 0; i < animals.length; i++) {
+        var name = animals[i].toLowerCase()
+        var count = 1
+        var localMax = 1
+
+        for (var j = 1; j < name.length; j++) {
+            if (name[j] == name[j - 1]) {
+                count++
+                if (count > localMax) {
+                    localMax = count
+                }
+            } else {
+                count = 1
+            }
+        }
+
+        if (localMax > maxRepeat) {
+            maxRepeat = localMax
+            result = [animals[i]]
+        } else if (localMax == maxRepeat) {
+            result.push(animals[i])
+        }
+    }
+
+    for (var i = 0; i < result.length; i++) {
+        document.write(result[i] + "<br>")
+    }
+
+    document.write("Max consecutive count = " + maxRepeat)
+</script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>29. Use a for loop to create an array of only unique letters used in animal names.</title>
+</head>
+<body>
+<script>
+    const animals = [
+        "Lion", "Tiger", "Elephant", "Giraffe", "Monkey", "Zebra",
+        "Kangaroo", "Panda", "Leopard", "Cheetah", "Rhinoceros",
+        "Hippopotamus", "Wolf", "Fox", "Deer", "Rabbit", "Squirrel",
+        "Crocodile", "Alligator", "Ostrich", "Peacock", "Eagle",
+        "Falcon", "Penguin", "Dolphin", "Shark", "Whale", "Octopus",
+        "Jellyfish", "Starfish"
+    ];
+
+    var unique = []
+    for (var i = 0; i < animals.length; i++) {
+        var name = animals[i].toLowerCase()
+        for (var j = 0; j < name.length; j++) {
+            var ch = name[j]
+            var found = false
+            for (var k = 0; k < unique.length; k++) {
+                if (unique[k] == ch) {
+                    found = true
+                    break
+                }
+            }
+            if (!found) {
+                unique.push(ch);
+            }
+        }
+    }
+    document.write("Unique letters used in animal names:<br>");
+    document.write(unique.join(", "));
+</script>
+</body>
+</html>

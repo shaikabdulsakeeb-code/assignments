@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>25. Use a for loop to create an array containing only animals with more than 5 letters.</title>
+</head>
+<body>
+    <script>
+        const animals = [
+"Lion", "Tiger", "Elephant", "Giraffe", "Monkey", "Zebra",
+"Kangaroo", "Panda", "Leopard", "Cheetah", "Rhinoceros",
+"Hippopotamus", "Wolf", "Fox", "Deer", "Rabbit", "Squirrel",
+"Crocodile", "Alligator", "Ostrich", "Peacock", "Eagle",
+"Falcon", "Penguin", "Dolphin", "Shark", "Whale", "Octopus",
+"Jellyfish", "Starfish"
+];
+        var newarraay=[]
+        for(var i=0;i<animals.length;i++){
+            if(animals[i].length>5){
+                newarraay.push(animals[i])
+            }
+        }
+        
+        for(var i=0;i<newarraay.length;i++){
+            document.write(newarraay[i]+"<br>")
+        }
+        
+    </script>
+</body>
+</html>
