@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment 4</title>
+</head>
+
+<body>
+    <script>
+        const students = [
+            { name: "John", age: 18 },
+            { name: "Emily", age: 20 },
+            { name: "Michael", age: 22 },
+            { name: "Sarah", age: 19 },
+        ];
+
+        //  1. Access Object Properties: Write a function that takes the name of a student as input and 
+        // returns the corresponding age of the student. If the student doesn't exist, return null. 
+        function accessstd(nam) {
+            var stfind = students.find((std) => std.name == nam)
+            return stfind ? stfind.age : null
+        }
+        nam = prompt("Enter name:")
+        var age = accessstd(nam)
+        document.write("Name = " + nam + " and age = " + age)
+
+
+        // 2. Array Length: Write a function that returns the total number of students in the array. 
+        function cntstd(std) {
+            var cnt = 0
+            std.forEach(s => {
+                cnt++
+            })
+            return cnt
+        }
+        var nstd = cntstd(students)
+        document.write("<br>No.of students = " + nstd)
+
+        // 3. Find Oldest Student: Write a function that finds the oldest student from the array and returns
+        // their name and age
+        function findoldest(std) {
+            var stdolder = std.reduce((a, b) => {
+                return a.age > b.age ? a : b
+            })
+            return stdolder
+
+        }
+        var oldest = findoldest(students)
+        document.write("<br>Oldest student name =  " + oldest.name + " and age = " + oldest.age + "<br>")
+
+        // 4. Add a New Student: Write a function that adds a new student to the array.The function should
+        // take the student's name and age as parameters.
+        function addstd(obj, std) {
+            std.push(obj)
+        }
+        name = prompt("Enter student to add =")
+        age = +prompt("Enter age =")
+        addstd({ name, age }, students)
+        students.forEach((std) => {
+            document.write("Name =" + std.name + " and age = " + std.age + "<br>")
+        })
+        //         5. Remove a Student by Name: Write a function that removes a student from the array based on
+        // their name.If the student doesn't exist, return a message saying "Student not found."
+        function Removestd(name, std) {
+            var found = false
+            std.forEach((s, index) => {
+                if (s.name.toLowerCase() == name.toLowerCase()) {
+                    std.splice(index, 1)   // remove student
+                    found = true
+                }
+            })
+            if (!found) {
+                document.write("Student not found<br>")
+            }
+        }
+        name = prompt("Enter student to remove =")
+        Removestd(name, students)
+        document.write("<br>After removing " + name + " = <br>")
+        students.forEach((std) => {
+            document.write("Name = " + std.name + " and age = " + std.age + "<br>")
+        })
+
+
+        //         6. Filter Students by Age: Write a function that filters students who are older than a specified age.
+        // For example, filter out all students over the age of 20.
+        age = +prompt("Enter the age to filter")
+        function filterstdbyage(std) {
+            if (std.age > age) {
+                return true
+            }
+            else {
+                return false
+            }
+        }
+        var filteredbyage = students.filter(filterstdbyage)
+        document.write("<br>Students who older than " + age + " = <br>")
+        filteredbyage.forEach((s) => {
+            document.write(s.name + " and age = " + s.age + "<br>")
+        })
+
+
+        //         7. Update Student's Age: Write a function that takes a student's name and a new age as
+        //             parameters and updates that student's age in the array. If the student doesn't exist, return a
+        // message saying "Student not found."
+        function updateage(std, students) {
+            var found = false
+            students.forEach((s, idx) => {
+                if (std.name.toLowerCase() == s.name.toLowerCase()) {
+                    students.splice(idx, 1, std)
+                    found = true
+                }
+            })
+            if (!found) {
+                document.write("<br>Student is not there in the array ")
+            }
+            return students
+
+        }
+        var name = prompt("enter the name ")
+        var age = +prompt("Enter the age to update")
+        var up = { name, age }
+        var newstarray = updateage(up, students)
+        document.write("<br>After updating the students age  = <br>")
+        newstarray.forEach((s) => {
+            document.write("Name  = " + s.name + " and age = " + s.age + "<br>")
+        })
+
+
+        //8. Sort Students by Age: Write a function that sorts the array of students by age in ascending
+        // order.
+        students.sort((a, b) => a.age - b.age)
+        document.write("<br>After sorting array by age in ascending array = <br>")
+        students.forEach((s) => {
+            document.write("Name  = " + s.name + " and age = " + s.age + "<br>")
+        })
+
+        // 9. Average Age: Write a function that calculates and returns the average age of all students in the
+        //         array.
+        var avg = students.reduce((sum, s) => {
+            return sum + s.age
+        }, 0)
+        avg = Math.round(avg / students.length)
+        document.write("<br>Average age of all students = " + avg)
+
+        // 10. Check if Student Exists: Write a function that checks if a student with a specific name exists in
+        //the array.Return true if the student exists, otherwise return false.
+        var name = prompt("Enter name to check")
+        var f = students.find((s) => s.name.toLowerCase() == name.toLowerCase())
+        if (f) {
+            document.write("<br>Yes, " + name + " exist in students array")
+        }
+        else {
+            document.write("<br>No, " + name + " does not exist in students array")
+
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment 1</title>
+</head>
+
+<body>
+    <script>
+        var people = [
+            {
+                "firstname": "praveen",
+                "lastname": "gubbala",
+                "age": 36,
+                "gender": "male",
+                "city": "hyd",
+                "salary": 10000
+            },
+            {
+                "firstname": "srikanth",
+                "lastname": "gubbala",
+                "age": 32,
+                "gender": "male",
+                "city": "bengaluru",
+                "salary": 20000
+            },
+            {
+                "firstname": "pradeep",
+                "lastname": "reddy",
+                "age": 21,
+                "gender": "male",
+                "city": "hyd",
+                "salary": 25000
+            },
+            {
+                "firstname": "mounika",
+                "lastname": "mudiraj",
+                "age": 20,
+                "gender": "female",
+                "city": "nalgonda",
+                "salary": 30000
+            },
+            {
+                "firstname": "nikhil",
+                "lastname": "m",
+                "age": 22,
+                "gender": "male",
+                "city": "guntur",
+                "salary": 2000
+            },
+            {
+                "firstname": "riya",
+                "lastname": "bhadouria",
+                "age": 14,
+                "gender": "female",
+                "city": "indore",
+                "salary": 40000
+            }
+        ];
+        document.write("<br>Fisrtnames : <br>")
+        // 1. Print all the firstnames. 
+        people.forEach(function({firstname}){
+            document.write(firstname+"<br>")
+        })
+        document.write("<br>Full names : <br>")
+        // 2. Print all the full names. 
+        people.forEach(function({firstname,lastname}){
+            document.write(firstname+lastname+"<br>")
+        })
+        // 3. Print only those names whose age is more than 25. 
+        document.write("<br>Names of those whose age is moret than 25 : <br>")
+        people.filter(function({firstname,age}){
+            if(age>25){
+                document.write(firstname+"<br>")
+            }
+        })
+        // 4. Print all female names. 
+        document.write("<br>Female names : <br>")
+        people.filter(function({firstname,gender}){
+            if(gender=="female"){
+                document.write(firstname+"<br>")
+            }
+        })
+        // 5. Print only those names whose salary is more than 25000 and increase their salaries by 15%. 
+        document.write("<br>names whose salary is more than 25000: <br>")
+
+        var inc = people.filter(function ({ firstname, salary }) {
+            if (salary > 25000) {
+                document.write(firstname + " and salary = " + salary + "<br>")
+                return true;   // filter must return true/false
+            }
+        })
+
+        document.write("<br>After increase their salaries by 15% =<br>")
+        
+        inc = inc.map(function (person) {
+            person.salary = person.salary + (person.salary * 0.15)
+            return person;    // return full object
+        })
+        
+        inc.forEach(function (person) {
+            document.write(person.firstname + " and salary = " + person.salary + "<br>")
+        })
+        
+        // 6. Using prompt, print only those names whose city is "hyd". 
+        var city=prompt("enter city")
+        document.write("<br>Names of them whose city ",city,"<br>")
+        people.forEach(function(person){
+            if(city.toLowerCase()==person.city){
+                document.write(person.firstname+"<br>")
+            }
+        })
+
+        // 7. Print the total salary of all the people.
+         
+        var totalsalary=people.reduce(function(sum,person){
+            return sum+person.salary
+        },0)
+        document.write("<br>Total salary of all people = "+totalsalary)
+
+    //    9. Print all the firstnames whose salary is more than 25000. 
+         document.write("<br><br>names whose salary is more than 25000: <br>")
+         inc.forEach(function (person) {
+             document.write(person.firstname + " and salary = " + person.salary + "<br>")
+            })
+            
+        //  11. Print all the fullnames in the alphabetical order. 
+        document.write("<br>fullnames in the alphabetical order. : <br>")
+        var a=people.map(function({firstname,lastname}){
+            return firstname+" "+lastname
+        })
+        a.sort()
+        a.forEach((ele)=>{
+            document.write(ele+"<br>")
+        })
+        
+       // 12. Print all the fullnames in the increasing order of their age. 
+       document.write("<br>Fullnames in the increasing order of their age : <br>");
+        var sortedPeople = people.slice().sort(function(a, b){
+             return a.age - b.age;   // increasing order
+        });
+
+        // sort people array based on age (ascending)
+        sortedPeople.sort(function(a, b){
+          return a.age - b.age;
+        });
+
+        // print fullnames
+        sortedPeople.forEach(function(person){
+          document.write(person.firstname + " " + person.lastname + " - Age: " + person.age + "<br>");
+        });
+       
+        // 13. Print all the fullnames in the reverse alphabetical order. 
+        var rev=a.slice();
+        rev.reverse()
+        document.write("<br>Full names in reverse alphabetical order =<br>")
+        rev.forEach((ele)=>{
+            document.write(ele+"<br>")
+        })
+        
+        // 14. Print all the fullnames in the decreasing order of their salaries. 
+        var s=people.slice().sort((a,b)=>{
+            return a.salary-b.salary
+        }).reverse()
+        document.write("<br>fullnames in the decreasing order of their salaries =<br>")
+        s.forEach((person)=>{
+            document.write(person.firstname+" "+person.lastname+" Salary = "+person.salary+"<br>")
+        })
+        
+        // 15. Print all the cities in which the people live. There should not be any duplicate cities. 
+        var cities=people.map((person)=>{
+            return person.city
+        })
+        document.write("<br>all the cities in which the people live = <br>")
+        var uniq=[]
+        cities.forEach((city)=>{
+            if(uniq.indexOf(city) == -1){
+               uniq.push(city)
+               document.write(city+"<br>")
+            }
+        })
+         
+        // 16. Print all the male names whose age is greater than 25. 
+        document.write("<br>all the male names whose age is greater than 25 = <br>")
+        var malemajor=people.filter((person)=>{
+            if(person.age>25 && person.gender=='male'){
+                return true
+            }
+            else{
+                return false
+            }
+        })
+        malemajor.forEach((p)=>{
+            document.write("Name = "+p.firstname+"&nbsp"+p.lastname+"<br>")
+        })
+
+        // 17. Print all names that starts with "p" and the firstname should be in UPPERCASE. e.g. PRAVEEN 
+        document.write("<br>all names that starts with 'p' <br>")
+        people.forEach(({firstname})=>{
+            if(firstname[0]=='p'){
+                document.write(firstname.toUpperCase()+"<br>")
+            }
+        })
+
+        // 18. Print the average age of all students 
+        var avg=people.reduce((sum,{age})=>{
+            return sum+age
+        },0)
+        avg=avg/people.length
+        document.write("<br>Average age of all students = "+Math.round(avg))
+        
+        // Advanced: 
+        // 1. Print all the full names in ascending order of their salaries. 
+        document.write("<br>full names in ascending order of their salaries = <br>")
+        var sortedsalaries=people.slice()
+        sortedsalaries.sort((a,b)=>{
+            return a.salary-b.salary
+        })
+        sortedsalaries.forEach((person)=>{
+            document.write(person.firstname+" and salary = "+person.salary+"<br>")
+        })
+
+        // 2. Separate all male and female people and store them in separate arrays. 
+        var f=[]
+        people.forEach((person)=>{
+            if(person.gender=='female'){
+                f.push(person)
+            }
+        })
+        var m=[]
+        people.forEach((person)=>{
+            if(person.gender=='male'){
+                m.push(person)
+            }
+        })
+
+        // 3. Store all the cities in an array. There should not be any duplicates. 
+        //         var cities=people.map((person)=>{
+        //     return person.city
+        // })
+        // document.write("<br>all the cities in which the people live = <br>")
+        // var uniq=[]
+        // cities.forEach((city)=>{
+        //     if(uniq.indexOf(city) == -1){
+        //        uniq.push(city)
+        //        document.write(city+"<br>")
+        //     }
+        // })
+        
+        // 4. Print all the full names with the first letter in uppercase. Example: "Praveen Gubbala". 
+        document.write("<br>All fullnames with first letter in uppercase = <br>")
+        people.forEach(({firstname,lastname})=>{
+            document.write(firstname[0].toUpperCase()+firstname.slice(1,firstname.length)+" "+lastname+"<br>")
+        })
+        
+        // 5. Print the full names of all the male people in alphabetical order(a-z). 
+        document.write("<br>full names of all the male people in alphabetical order(a-z) = <br>")
+        var namesofmales=[]
+        var males=people.filter(({firstname,lastname,gender})=>{
+            if(gender=='male'){
+                namesofmales.push(firstname+" "+lastname)
+                return true
+            }
+            else{
+                return false
+            }
+        })
+          
+        namesofmales.sort()
+        namesofmales.forEach((name)=>{
+            document.write(name+"<br>")
+        })
+        
+        // 6. Print the full names of all the female people in reverse alphabetical order(z-a). 
+        document.write("<br>full names of all the female people in reverse alphabetical order(a-z) = <br>")
+        var namesoffemales=[]
+        var females=people.filter(({firstname,lastname,gender})=>{
+            if(gender=='female'){
+               namesoffemales.push(firstname+" "+lastname)
+                return true
+             }
+            else{
+                return false
+            }
+        })
+        namesoffemales.sort()
+        namesoffemales=namesoffemales.reverse()
+        namesoffemales.forEach((name)=>{
+            document.write(name+"<br>")
+        })
+        
+        // 7. Increase the salaries of all people by 15% and print the new array of objects. 
+        var newarray=people.map((person)=>{
+            person.salary = person.salary + (person.salary * 0.15)
+            return person
+        })
+        document.write("<br>After increasing each person salary by 15% = <br>")
+        newarray.forEach((person)=>{
+            document.write(person.firstname+" "+person.lastname+" and salary = "+person.salary+"<br>")
+        })
+
+        // 8. Check whether any person is having the letter 'k' in their first names. 
+        var ck=false
+        document.write("<br>")
+        people.forEach((person)=>{
+            var f=person.firstname+" "+person.lastname
+            if(f.includes('k')){
+                document.write(f+"<br>")
+                ck=true
+            }
+        })
+        if(ck){
+            document.write("<br>Yes the above persons have 'k' in their name")
+        }
+        else{
+            document.write("<br>No one has 'k' in their name")
+        }
+
+        //  9. Check whether all people are having the letter 'a' in their last names. 
+
+        var ch=people.every((person)=>{
+            if(person.lastname.includes('a')){
+                return true
+            }
+            else{
+                return false
+            }
+        })
+        document.write("<br>Is all people are having 'a' in their lastname = "+(ch?"Yes":"No"))
+
+
+        // 10. Add a "role" property to each object and print the new array of objects. For example, add
+        // "role":"Lead Engineer" to each object.
+        document.write("<br><br>After adding role to each person <br>")
+        people.forEach((person)=>{
+            person.role="Lead Engineer"
+            document.write("Name = "+person.firstname+" "+person.lastname+" and Role = "+person.role+"<br>")
+        })
+        // 11. Sort the array based on their lastname 
+        var sortbylastname=people.slice()
+        document.write("<br>Sorted by lastname = <br>")
+        sortbylastname.sort((a,b)=>a.lastname.localeCompare(b.lastname))
+        sortbylastname.forEach((person)=>{
+            document.write("Name = "+person.lastname+" "+person.firstname+"<br>")
+        })
+</script>
+</body>
+
+</html>

@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment 5</title>
+</head>
+
+<body>
+    <script>
+        const employees = [
+            {
+                id: 1, name: "John Doe", department: "Engineering", salary: 55000,
+                status: "active"
+            },
+            {
+                id: 2, name: "Jane Smith", department: "Marketing", salary: 60000,
+                status: "inactive"
+            },
+            {
+                id: 3, name: "Michael Johnson", department: "Engineering", salary:
+                    75000, status: "active"
+            },
+            {
+                id: 4, name: "Emily Davis", department: "Human Resources", salary:
+                    48000, status: "active"
+            },
+            {
+                id: 5, name: "Chris Lee", department: "Marketing", salary: 53000, status:
+                    "ina ctive"
+            },
+            {
+                id: 6, name: "Sarah Brown", department: "Engineering", salary: 62000,
+                status: "active"
+            },
+            {
+                id: 7, name: "David Wilson", department: "Human Resources", salary:
+                    47000, status: "active"
+            }, {
+                id: 8, name: "Anna White", department: "Marketing", salary: 59000,
+                status: "inactive"
+            }
+        ];
+        //         Beginner Level (Basic Array and Object Manipulation)
+        // 1. Access Employee Data: Write a function that takes an employee's ID as input and returns the
+        // employee's name and department. If the employee doesn't exist, return "Employee not found".
+        function getEmployeeById(empId) {
+            const employee = employees.find(emp => emp.id === empId)
+            if (employee) {
+                return "Name: " + employee.name + ", Department: " + employee.department
+            }
+            return "Employee not found"
+        }
+
+        document.write("1) Employee details for ID = 3<br>")
+        document.write(getEmployeeById(3))
+        document.write("<br><br>")
+
+        // 2. Total Number of Employees: Write a function that returns the total number of employees in the
+        // array.
+        function totalEmployees() {
+            return employees.length
+        }
+
+        document.write("2) Total number of employees<br>")
+        document.write(totalEmployees())
+        document.write("<br><br>")
+
+        // 3. List Active Employees: Write a function that returns an array of names of all employees who are
+        // currently "active."
+        function getActiveEmployees() {
+            return employees.filter(emp => emp.status === "active").map(emp => emp.name)
+        }
+
+        document.write("3) Active employees<br>")
+        document.write(getActiveEmployees().join(", "))
+        document.write("<br><br>")
+
+        // 4. Find Employee by Department: Write a function that takes a department name as input and
+        // returns a list of employees working in that department.
+        function getEmployeesByDepartment(deptName) {
+            return employees.filter(emp => emp.department === deptName)
+        }
+
+        document.write("4) Employees in Engineering department<br>")
+        getEmployeesByDepartment("Engineering").forEach(emp => {
+            document.write(emp.name + " Salary: " + emp.salary + "<br>")
+        })
+        document.write("<br>")
+
+        // 5. Average Salary: Write a function that calculates and returns the average salary of all employees
+        // in the company.
+        function averageSalary() {
+            const total = employees.reduce((sum, emp) => sum + emp.salary, 0)
+            return total / employees.length
+        }
+
+        document.write("5) Average salary of employees<br>")
+        document.write(averageSalary())
+        document.write("<br><br>")
+
+        // 6. Update Employee Status: Write a function that takes an employee ID and a new status ("active"
+        // or "inactive") as parameters and updates the employee's status. If the employee doesn't exist,
+        // return "Employee not found".
+        function updateEmployeeStatus(id, newStatus) {
+            const emp = employees.find(e => e.id === id)
+            if (!emp) return "Employee not found"
+            emp.status = newStatus
+            return emp.name + " status updated"
+        }
+
+        document.write("6) Update status of employee ID 2<br>")
+        document.write(updateEmployeeStatus(2, "active"))
+        document.write("<br><br>")
+
+        // 7. Remove Employee by ID: Write a function that removes an employee from the array based on
+        // their ID. If the employee doesn’t exist, return "Employee not found".
+        function removeEmployeeById(id) {
+            const index = employees.findIndex(e => e.id === id)
+            if (index === -1) return "Employee not found"
+            employees.splice(index, 1)
+            return "Employee removed"
+        }
+
+        document.write("7) Remove employee ID 8<br>")
+        document.write(removeEmployeeById(8))
+        document.write("<br><br>")
+
+        // 8. Employees with Salary Above a Threshold: Write a function that takes a salary threshold as
+        // input and returns an array of employees who earn more than the specified salary.
+        function employeesAboveSalary(amount) {
+            return employees.filter(emp => emp.salary > amount)
+        }
+
+        document.write("8) Employees with salary above 60000<br>")
+        employeesAboveSalary(60000).forEach(emp => {
+            document.write(emp.name + "<br>")
+        })
+        document.write("<br>")
+
+        // 9. Sort Employees by Salary: Write a function that sorts employees in descending order by their
+        // salary.
+        function sortEmployeesBySalary() {
+            return employees.slice().sort((a, b) => b.salary - a.salary)
+        }
+
+        document.write("9) Employees sorted by salary<br>")
+        sortEmployeesBySalary().forEach(emp => {
+            document.write(emp.name + " " + emp.salary + "<br>")
+        })
+        document.write("<br>")
+
+        // 10. Department-wise Salary Calculation: Write a function that calculates the total salary expense
+        // for each department. The result should be an object where the keys are department names, and
+        // the values are the total salaries for each department.
+        function departmentSalaryTotal() {
+            const result = {}
+            employees.forEach(emp => {
+                result[emp.department] = (result[emp.department] || 0) + emp.salary
+            })
+            return result
+        }
+
+        document.write("10) Department wise total salary<br>")
+        const deptTotal = departmentSalaryTotal()
+        for (let dept in deptTotal) {
+            document.write(dept + ": " + deptTotal[dept] + "<br>")
+        }
+        document.write("<br>")
+
+        // 11. Employee with the Highest Salary: Write a function that returns the employee who has the
+        // highest salary, along with their name, department, and salary.
+        function highestSalaryEmployee() {
+            return employees.reduce((max, emp) => emp.salary > max.salary ? emp : max)
+        }
+
+        const highEmp = highestSalaryEmployee()
+        document.write("11) Highest salary employee<br>")
+        document.write(highEmp.name + " " + highEmp.department + " " + highEmp.salary)
+        document.write("<br><br>")
+
+        // 12. Average Salary by Department: Write a function that calculates and returns the average salary
+        // of employees in each department. The result should be an object where the keys are department
+        // names, and the values are the average salary for each department.
+        function averageSalaryByDepartment() {
+            const totals = {}
+            const counts = {}
+            employees.forEach(emp => {
+                totals[emp.department] = (totals[emp.department] || 0) + emp.salary
+                counts[emp.department] = (counts[emp.department] || 0) + 1
+            })
+            const result = {}
+            for (let dept in totals) {
+                result[dept] = totals[dept] / counts[dept]
+            }
+            return result
+        }
+
+        document.write("12) Average salary by department<br>")
+        const avgDept = averageSalaryByDepartment()
+        for (let dept in avgDept) {
+            document.write(dept + ": " + avgDept[dept] + "<br>")
+        }
+        document.write("<br>")
+
+        // 13. Inactive Employees Count: Write a function that returns the number of employees who have an
+        // "inactive" status.
+        function inactiveEmployeesCount() {
+            return employees.filter(emp => emp.status === "inactive").length
+        }
+
+        document.write("13) Inactive employees count<br>")
+        document.write(inactiveEmployeesCount())
+        document.write("<br><br>")
+
+        // 14. Update Salary Based on Department: Write a function that increases the salary of all
+        // employees in a specific department by a certain percentage. The function should take the
+        // department name and percentage increase as parameters.
+        function updateSalaryByDepartment(dept, percent) {
+            employees.forEach(emp => {
+                if (emp.department === dept) {
+                    emp.salary += emp.salary * percent / 100
+                }
+            })
+        }
+
+        document.write("14) Increase Engineering salary by 10%<br>")
+        updateSalaryByDepartment("Engineering", 10)
+        getEmployeesByDepartment("Engineering").forEach(emp => {
+            document.write(emp.name + " " + emp.salary + "<br>")
+        })
+        document.write("<br>")
+
+        // 15. Promote Employees (Based on Salary): Write a function that promotes employees who have a
+        // salary above a certain threshold (e.g., $60,000) by giving them a $10,000 raise. Return the
+        // updated list of employees with the new salary.
+        function promoteEmployees(threshold) {
+            employees.forEach(emp => {
+                if (emp.salary > threshold) {
+                    emp.salary += 10000
+                }
+            })
+            return employees
+        }
+
+        document.write("15) Promote employees with salary above 60000<br>")
+        promoteEmployees(60000).forEach(emp => {
+            document.write(emp.name + " " + emp.salary + "<br>")
+        })
+        document.write("<br>")
+
+        // 16. Employee Report: Write a function that returns a report of all employees in the following format:
+        // Name: [name], Department: [department], Salary: [salary], Status: [status]. The report should be
+        // sorted alphabetically by employee name.
+        function employeeReport() {
+            return employees.slice().sort((a, b) => a.name.localeCompare(b.name))
+        }
+
+        document.write("16) Employee report<br>")
+        employeeReport().forEach(emp => {
+            document.write("Name: " + emp.name + ", Department: " + emp.department + ", Salary: " + emp.salary + ", Status: " + emp.status + "<br>")
+        })
+    </script>
+</body>
+
+</html>

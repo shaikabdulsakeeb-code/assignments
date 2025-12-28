@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment 3</title>
+</head>
+
+<body>
+    <script>
+        var products = [
+            {
+                "id": 1,
+                "title": "iPhone 9",
+                "description": "An apple mobile which is nothing like apple",
+                "price": 549,
+                "discountPercentage": 12.96,
+                "rating": 4.69,
+                "stock": 94,
+                "brand": "Apple",
+                "category": "smartphones",
+                "thumbnail": "products/1/thumbnail.jpg"
+
+            },
+            {
+                "id": 2,
+                "title": "iPhone X",
+                "description": "6.5-inch Super Retina HD display with OLED",
+                "price": 899,
+                "discountPercentage": 17.94,
+                "rating": 4.44,
+                "stock": 34,
+                "brand": "Apple",
+                "category": "smartphones",
+                "thumbnail": "products/2/thumbnail.jpg"
+
+            },
+            {
+                "id": 3,
+                "title": "Samsung Universe 9",
+                "description": "Samsung's new phone which goes beyond Galaxy",
+                "price": 1249,
+                "discountPercentage": 15.46,
+                "rating": 4.09,
+                "stock": 36,
+                "brand": "Samsung",
+                "category": "smartphones",
+                "thumbnail": "products/3/thumbnail.jpg"
+
+            },
+            {
+                "id": 4,
+                "title": "OPPOF19",
+                "description": "OPPO F19 is officially announced on April 2021.",
+                "price": 280,
+                "discountPercentage": 17.91,
+                "rating": 4.3,
+                "stock": 123,
+                "brand": "OPPO",
+                "category": "smartphones",
+                "thumbnail": "products/4/thumbnail.jpg"
+
+            },
+            {
+                "id": 5,
+                "title": "Huawei P30",
+                "description": "Huawei's re-badged P30 Pro New Edition",
+                "price": 499,
+                "discountPercentage": 10.58,
+                "rating": 4.09,
+                "stock": 32,
+                "brand": "Huawei",
+                "category": "smartphones"
+            }
+        ];
+        // 1. Print all the product titles in ascending order of their prices. 
+        var sortedbyprice = products.slice()
+        document.write("The product titles in ascending order of their prices = <br>")
+        sortedbyprice.sort((a, b) => a.price - b.price)
+        sortedbyprice.forEach(pr => {
+            document.write(pr.title + " and price = " + pr.price + "<br>")
+        })
+
+        // 2. Separate all the Apple and non-Apple products and store them in separate arrays. 
+        var applepr = products.filter((pr) => {
+            if (pr.brand == 'Apple') {
+                return true
+            }
+            else {
+                return false
+            }
+        })
+        var nonapplepr = products.filter((pr) => {
+            if (pr.brand != 'Apple') {
+                return true
+            }
+            else {
+                return false
+            }
+        })
+
+        // 3. Store all the brands in an array. There should not be any duplicates. 
+        var uniq = []
+        products.forEach((pr) => {
+            if (uniq.indexOf(pr.brand) == -1) {
+                uniq.push(pr.brand)
+            }
+        })
+        document.write("<br>All brands = <br>")
+        uniq.forEach((br) => {
+            document.write(br + "<br>")
+        })
+
+        // 4.Modify all the descriptions so that they have only 20 characters and print the new
+        // descriptions.
+        // Expected output: "An apple mobile whic"
+        // "6.5-inch Super Retin" ……and so on 
+        document.write("<br>After modifying all description by only 20 characters <br>")
+        var pr = products.map((pr) => {
+            if (pr.description.length != 20) {
+                pr.description = pr.description.slice(0, 20)
+            }
+            return pr
+        })
+        products = pr
+        products.forEach((pr) => {
+            document.write(pr.title + " and description = " + pr.description + "<br>")
+        })
+
+        // 5. Print the product titles having price more than 500 in alphabetical order(a-z). 
+        document.write("<br>Product titles having price more than 500 in alphabetical order(a-z) <br>")
+        var sortedbytitle = products.filter((pr) => {
+            if (pr.price > 500) {
+                return true
+            }
+            else {
+                return false
+            }
+        })
+        sortedbytitle.sort((a, b) => a.title.localeCompare(b.title))
+        sortedbytitle.forEach((pr) => {
+            document.write(pr.title + "<br>")
+        })
+
+        // 6. Print the product names having stock less than 50 in reverse alphabetical order(z-a). 
+        document.write("<br>Product titles having price less than 50 in reverse alphabetical order(a-z) = <br>")
+        var sortbystock = products.filter((pr) => {
+            if (pr.stock < 50) {
+                return true
+            }
+            else {
+                return false
+            }
+        }).sort((a, b) => a.title.localeCompare(b.title)).reverse()
+        sortbystock.forEach((pr) => {
+            document.write(pr.title + " and stock = " + pr.stock + "<br>")
+        })
+
+
+        // 7. Decrease the "discountPercentage" of all products by 3% and print the new array of
+        // objects.
+        document.write("<br>After Decreasing the 'discountPercentage'  of all products by 3% = <br>")
+        var Decreasediscountpercentage = products.map((pr) => {
+            pr.discountPercentage = pr.discountPercentage - 3
+            return pr
+        })
+        Decreasediscountpercentage.forEach((pr) => {
+            document.write(pr.title + " and discountPercentage = " + pr.discountPercentage + "<br>")
+        })
+
+        // 8. Check whether any of the products has stock less than 10. 
+        document.write("<br>Products = <br>")
+        var checkstock = false
+        products.forEach((pr) => {
+            if (pr.stock < 10) {
+                checkstock = true
+                document.write(pr.title + " and Stock = " + pr.stock + "<br>")
+            }
+        })
+        if (checkstock) {
+            document.write("<br>Yes the above products have stock less than 10<br>")
+        }
+        else {
+            document.write("<br>There are no products that have stock less than 10<br>")
+        }
+
+        // 9. Check whether all products have thumbnails or not. 
+        var checkthumbnail = products.every((pr) => {
+            if (pr.thumbnail == undefined || pr.thumbnail.length == 0) {
+                return false
+            }
+            else {
+                return true
+            }
+        })
+        if (checkthumbnail) {
+            document.write("<br>Yes all the products have thumbnails<br>")
+        }
+        else {
+            document.write("<br>No all the products does not have thumbnails<br>")
+        }
+
+        //     0. Add a "newPrice" property to each object by calculating the price according to the
+        // discountPercentage and print the new array of objects.
+        // For example:
+        // "price": 549,
+        //  "discountPercentage": 12.96,
+        //  "newPrice": 71.1504………………………………………(549-12.96% = 71.1504) 
+        document.write("<br>")
+        var newpr = products.map((pr) => {
+            pr.newPrice = pr.price - (pr.price * pr.discountPercentage / 100)
+            return pr
+        })
+        newpr.forEach((pr) => {
+            document.write(pr.title + "<br>price = " + pr.price + "<br>discountPercentage = " + pr.discountPercentage + "<br>newPrice = " + pr.newPrice + "<br><br>")
+        })
+    </script>
+</body>
+
+</html>
