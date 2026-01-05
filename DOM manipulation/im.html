@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        const images = ["https://i.pinimg.com/1200x/90/54/de/9054de59924360eb7ac55e1271b1838a.jpg",
+            "https://i.pinimg.com/1200x/32/81/bd/3281bd8ffcd7366370711eb698a7af7b.jpg",
+            "https://i.pinimg.com/1200x/2f/e7/24/2fe7249e793d0f6b3bea6b63c2f70042.jpg",
+            "https://i.pinimg.com/1200x/fa/2d/a1/fa2da151d3b24c9334952178e364501b.jpg"
+        ]
+        images.forEach(function(im){
+            let image=document.createElement('img')
+            image.src=im
+            image.style.height="150px"
+            image.style.width="100px"
+            document.body.appendChild(image)
+        })
+    </script>
+</body>
+
+</html>
