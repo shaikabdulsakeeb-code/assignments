@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <table border="2">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Math</th>
+                <th>Science</th>
+                <th>English</th>
+                <th>History</th>
+                <th>Art</th>
+            </tr>
+        </thead>
+        <tbody id="d2">
+
+        </tbody>
+    </table>
+    <script>
+        const students = [
+            {
+                name: "Divya Sri",
+                marks: [
+                    { subject: "Math", mark: 85 },
+                    { subject: "Science", mark: 90 },
+                    { subject: "English", mark: 78 },
+                    { subject: "History", mark: 92 },
+                    { subject: "Art", mark: 88 }
+                ]
+            },
+            {
+                name: "Amrutha",
+                marks: [
+                    { subject: "Math", mark: 70 },
+                    { subject: "Science", mark: 75 },
+                    { subject: "English", mark: 80 },
+                    { subject: "History", mark: 65 },
+                    { subject: "Art", mark: 72 }
+                ]
+            },
+            {
+                name: "Likitha",
+                marks: [
+                    { subject: "Math", mark: 95 },
+                    { subject: "Science", mark: 88 },
+                    { subject: "English", mark: 92 },
+                    { subject: "History", mark: 90 },
+                    { subject: "Art", mark: 96 }
+                ]
+            },
+            {
+                name: "Ahmed",
+                marks: [
+                    { subject: "Math", mark: 60 },
+                    { subject: "Science", mark: 68 },
+                    { subject: "English", mark: 72 },
+                    { subject: "History", mark: 55 },
+                    { subject: "Art", mark: 63 }
+                ]
+            },
+            {
+                name: "Netra",
+                marks: [
+                    { subject: "Math", mark: 80 },
+                    { subject: "Science", mark: 82 },
+                    { subject: "English", mark: 79 },
+                    { subject: "History", mark: 85 },
+                    { subject: "Art", mark: 83 }
+                ]
+            }
+        ];
+        students.forEach(function (student) {
+            var ntr = document.createElement("tr")
+
+            var ntd = document.createElement("td")
+            ntd.innerText = student.name;
+            ntr.appendChild(ntd)
+
+            student.marks.forEach(function (s){
+                var mtd = document.createElement("td")
+                mtd.innerText=s.mark
+                ntr.appendChild(mtd)
+            })
+            document.getElementById("d2").appendChild(ntr)
+        })
+    </script>
+</body>
+
+</html>
