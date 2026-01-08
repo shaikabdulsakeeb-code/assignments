@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>State Action UI</title>
+</head>
+<body>
+    <h1 id="cntdisplay">Count : 0</h1>
+    <button onclick="inc()">Increment</button><button onclick="dec()">Decrement</button>
+    <script>
+        var cnt=0
+        function inc(){
+            cnt++
+            document.getElementById("cntdisplay").innerText="Count : "+cnt
+        }
+        function dec(){
+            cnt--
+            document.getElementById("cntdisplay").innerText="Count : "+cnt
+        }
+    </script>
+</body>
+</html>

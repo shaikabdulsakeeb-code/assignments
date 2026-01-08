@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <table border="2" id="tb">
+        <thead>
+            <tr>
+                <th>Firstname<span></span></th>
+                <th>Lastname<span></span></th>
+                <th onclick="sortEmployees('age',event)">Age<span></span></th>
+                <th>Gender<span></span></th>
+                <th>City<span></span></th>
+                <th onclick="sortEmployees('salary',event)">Salary<span></span></th>
+            </tr>
+        </thead>
+        <tbody id="d1">
+
+        </tbody>
+    </table>
+    <select name="" id="" onchange="setPerPage(event)">
+        <option value="5" selected>5</option>
+        <option value="10">10</option>
+    </select>
+    <button onclick="prevPage()">Prev</button>
+    <button onclick="nextPage()">Next</button>
+    <script>
+        const employees = [
+            {
+                firstname: "John",
+                lastname: "Doe",
+                age: 30,
+                gender: "Male",
+                city: "New York",
+                salary: 60000
+            },
+            {
+                firstname: "Jane",
+                lastname: "Smith",
+                age: 25,
+                gender: "Female",
+                city: "Los Angeles",
+                salary: 75000
+            },
+            {
+                firstname: "Peter",
+                lastname: "Jones",
+                age: 35,
+                gender: "Male",
+                city: "Chicago",
+                salary: 80000
+            },
+            {
+                firstname: "Alice",
+                lastname: "Williams",
+                age: 28,
+                gender: "Female",
+                city: "Houston",
+                salary: 70000
+            },
+            {
+                firstname: "Bob",
+                lastname: "Brown",
+                age: 40,
+                gender: "Male",
+                city: "Dallas",
+                salary: 90000
+            },
+            {
+                firstname: "Charlie",
+                lastname: "Davis",
+                age: 32,
+                gender: "Male",
+                city: "Miami",
+                salary: 65000
+            },
+            {
+                firstname: "Diana",
+                lastname: "Miller",
+                age: 29,
+                gender: "Female",
+                city: "Seattle",
+                salary: 82000
+            },
+            {
+                firstname: "Eve",
+                lastname: "Wilson",
+                age: 31,
+                gender: "Female",
+                city: "Boston",
+                salary: 78000
+            },
+            {
+                firstname: "Frank",
+                lastname: "Moore",
+                age: 45,
+                gender: "Male",
+                city: "Denver",
+                salary: 95000
+            },
+            {
+                firstname: "Grace",
+                lastname: "Taylor",
+                age: 27,
+                gender: "Female",
+                city: "Phoenix",
+                salary: 68000
+            },
+            {
+                firstname: "Henry",
+                lastname: "Anderson",
+                age: 38,
+                gender: "Male",
+                city: "San Diego",
+                salary: 88000
+            },
+            {
+                firstname: "Ivy",
+                lastname: "Thomas",
+                age: 33,
+                gender: "Female",
+                city: "Philadelphia",
+                salary: 72000
+            },
+            {
+                firstname: "Jack",
+                lastname: "Jackson",
+                age: 42,
+                gender: "Male",
+                city: "Austin",
+                salary: 92000
+            },
+            {
+                firstname: "Karen",
+                lastname: "White",
+                age: 26,
+                gender: "Female",
+                city: "Charlotte",
+                salary: 63000
+            },
+            {
+                firstname: "Liam",
+                lastname: "Harris",
+                age: 37,
+                gender: "Male",
+                city: "Nashville",
+                salary: 85000
+            },
+            {
+                firstname: "Mia",
+                lastname: "Martin",
+                age: 30,
+                gender: "Female",
+                city: "Portland",
+                salary: 76000
+            },
+            {
+                firstname: "Noah",
+                lastname: "Garcia",
+                age: 39,
+                gender: "Male",
+                city: "Detroit",
+                salary: 89000
+            },
+            {
+                firstname: "Olivia",
+                lastname: "Rodriguez",
+                age: 24,
+                gender: "Female",
+                city: "Las Vegas",
+                salary: 61000
+            },
+            {
+                firstname: "Paul",
+                lastname: "Martinez",
+                age: 41,
+                gender: "Male",
+                city: "Kansas City",
+                salary: 91000
+            },
+            {
+                firstname: "Quinn",
+                lastname: "Hernandez",
+                age: 34,
+                gender: "Female",
+                city: "Orlando",
+                salary: 74000
+            },
+            {
+                firstname: "Ryan",
+                lastname: "Lopez",
+                age: 36,
+                gender: "Male",
+                city: "Indianapolis",
+                salary: 83000
+            },
+            {
+                firstname: "Sophia",
+                lastname: "Gonzalez",
+                age: 29,
+                gender: "Female",
+                city: "Columbus",
+                salary: 71000
+            },
+            {
+                firstname: "Tom",
+                lastname: "Perez",
+                age: 43,
+                gender: "Male",
+                city: "San Antonio",
+                salary: 93000
+            },
+            {
+                firstname: "Uma",
+                lastname: "Sanchez",
+                age: 27,
+                gender: "Female",
+                city: "Jacksonville",
+                salary: 67000
+            },
+            {
+                firstname: "Victor",
+                lastname: "Ramirez",
+                age: 35,
+                gender: "Male",
+                city: "Memphis",
+                salary: 81000
+            },
+            {
+                firstname: "Wendy",
+                lastname: "Campbell",
+                age: 31,
+                gender: "Female",
+                city: "Baltimore",
+                salary: 77000
+            },
+            {
+                firstname: "Xavier",
+                lastname: "Parker",
+                age: 40,
+                gender: "Male",
+                city: "Milwaukee",
+                salary: 90000
+            },
+            {
+                firstname: "Yara",
+                lastname: "Evans",
+                age: 28,
+                gender: "Female",
+                city: "New Orleans",
+                salary: 69000
+            },
+            {
+                firstname: "Zack",
+                lastname: "Edwards",
+                age: 37,
+                gender: "Male",
+                city: "Richmond",
+                salary: 86000
+            },
+            {
+                firstname: "Anna",
+                lastname: "Collins",
+                age: 32,
+                gender: "Female",
+                city: "Salt Lake City",
+                salary: 73000
+            },
+            {
+                firstname: "Ben",
+                lastname: "Stewart",
+                age: 44,
+                gender: "Male",
+                city: "Louisville",
+                salary: 94000
+            },
+            {
+                firstname: "Chloe",
+                lastname: "Morris",
+                age: 25,
+                gender: "Female",
+                city: "Raleigh",
+                salary: 64000
+            },
+            {
+                firstname: "David",
+                lastname: "Rogers",
+                age: 39,
+                gender: "Male",
+                city: "Oklahoma City",
+                salary: 87000
+            },
+            {
+                firstname: "Ella",
+                lastname: "Reed",
+                age: 30,
+                gender: "Female",
+                city: "Tucson",
+                salary: 75000
+            }, {
+                firstname: "Peter",
+                lastname: "Jones",
+                age: 35,
+                gender: "Male",
+                city: "Chicago",
+                salary: 80000
+            },
+            {
+                firstname: "Alice",
+                lastname: "Williams",
+                age: 28,
+                gender: "Female",
+                city: "Houston",
+                salary: 70000
+            },
+            {
+                firstname: "Bob",
+                lastname: "Brown",
+                age: 40,
+                gender: "Male",
+                city: "Dallas",
+                salary: 90000
+            },
+            {
+                firstname: "Charlie",
+                lastname: "Davis",
+                age: 32,
+                gender: "Male",
+                city: "Miami",
+                salary: 65000
+            },
+            {
+                firstname: "Diana",
+                lastname: "Miller",
+                age: 29,
+                gender: "Female",
+                city: "Seattle",
+                salary: 82000
+            },
+            {
+                firstname: "Eve",
+                lastname: "Wilson",
+                age: 31,
+                gender: "Female",
+                city: "Boston",
+                salary: 78000
+            }
+        ];
+        var i = 0;
+        var step = 5;
+        function genUI() {
+            document.getElementById("d1").innerHTML = ""
+            console.log("i", i);
+            console.log("step", step);
+            employees.slice(i, i + step).forEach(function (emp) {
+                var ntr = document.createElement("tr")
+
+                var fntd = document.createElement("td")
+                fntd.innerText = emp.firstname
+                ntr.appendChild(fntd);
+
+                var lntd = document.createElement("td")
+                lntd.innerText = emp.lastname
+                ntr.appendChild(lntd);
+
+                var agetd = document.createElement("td")
+                agetd.innerText = emp.age
+                ntr.appendChild(agetd);
+
+                var gendertd = document.createElement("td")
+                gendertd.innerText = emp.gender
+                ntr.appendChild(gendertd);
+
+                var citytd = document.createElement("td")
+                citytd.innerText = emp.city
+                ntr.appendChild(citytd);
+
+                var salarytd = document.createElement("td")
+                salarytd.innerText = emp.salary
+                ntr.appendChild(salarytd);
+
+                document.getElementById("d1").appendChild(ntr)
+            })
+        }
+        genUI()
+        function sortEmployees(k, ev) {
+            console.dir(ev.target);
+            document.querySelectorAll("#tb  span").forEach(function (el) {
+                el.innerHTML = ""
+            })
+            ev.target.childNodes[1].innerHTML = "&#8595"
+            // ev.target.innerHTML += "&#8595";
+            employees.sort(function (e1, e2) {
+                if (e1[k] < e2[k]) { return -1 }
+                else { return 1 }
+            })
+            genUI();
+
+        }
+        function nextPage() {
+            i = i + step;
+            console.log(i);
+            genUI()
+        }
+        function setPerPage(ev) {
+            console.log(ev.target.value);
+            step = +ev.target.value;
+            genUI()
+        }    
+    </script>
+</body>
+
+</html>
+<!-- <h1>97327824809</h1>
+    <h2>112863</h2> -->
+</script>
+</body>
+
+</html>
+<!-- <h1>97327824809</h1>
+    <h2>112863</h2> -->

@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>sorting table</title>
+</head>
+
+<body>
+    <table id="emp" border="1">
+        <thead>
+            <tr>
+                <td onclick="sortby('firstname',event)">Firstname<span></span></td>
+                <td onclick="sortby('lastname',event)">Lastname<span></span></td>
+                <td onclick="sortby('age',event)">Age<span></span></td>
+                <td onclick="sortby('gender',event)">Gender<span></span></td>
+                <td onclick="sortby('city',event)">City<span></span></td>
+                <td onclick="sortby('salary',event)">Salary<span></span></td>
+            </tr>
+        </thead>
+        <tbody id="tb">
+
+        </tbody>
+    </table>
+    <select onchange="perpage(event)" id="pp">
+        <option value="5" selected>5</option>
+        <option value="10">10</option>
+        <option value="15">15</option>
+    </select>
+    <button onclick="prev()" id="p">Previous</button>
+    <span id="pagenum">1</span>
+    <button onclick="next()" id="n">Next</button>
+    <script>
+        const employees = [
+            {
+                firstname: "John",
+                lastname: "Doe",
+                age: 30,
+                gender: "Male",
+                city: "New York",
+                salary: 60000
+            },
+            {
+                firstname: "Jane",
+                lastname: "Smith",
+                age: 25,
+                gender: "Female",
+                city: "Los Angeles",
+                salary: 75000
+            },
+            {
+                firstname: "Peter",
+                lastname: "Jones",
+                age: 35,
+                gender: "Male",
+                city: "Chicago",
+                salary: 80000
+            },
+            {
+                firstname: "Alice",
+                lastname: "Williams",
+                age: 28,
+                gender: "Female",
+                city: "Houston",
+                salary: 70000
+            },
+            {
+                firstname: "Bob",
+                lastname: "Brown",
+                age: 40,
+                gender: "Male",
+                city: "Dallas",
+                salary: 90000
+            },
+            {
+                firstname: "Charlie",
+                lastname: "Davis",
+                age: 32,
+                gender: "Male",
+                city: "Miami",
+                salary: 65000
+            },
+            {
+                firstname: "Diana",
+                lastname: "Miller",
+                age: 29,
+                gender: "Female",
+                city: "Seattle",
+                salary: 82000
+            },
+            {
+                firstname: "Eve",
+                lastname: "Wilson",
+                age: 31,
+                gender: "Female",
+                city: "Boston",
+                salary: 78000
+            },
+            {
+                firstname: "Frank",
+                lastname: "Moore",
+                age: 45,
+                gender: "Male",
+                city: "Denver",
+                salary: 95000
+            },
+            {
+                firstname: "Grace",
+                lastname: "Taylor",
+                age: 27,
+                gender: "Female",
+                city: "Phoenix",
+                salary: 68000
+            },
+            {
+                firstname: "Henry",
+                lastname: "Anderson",
+                age: 38,
+                gender: "Male",
+                city: "San Diego",
+                salary: 88000
+            },
+            {
+                firstname: "Ivy",
+                lastname: "Thomas",
+                age: 33,
+                gender: "Female",
+                city: "Philadelphia",
+                salary: 72000
+            },
+            {
+                firstname: "Jack",
+                lastname: "Jackson",
+                age: 42,
+                gender: "Male",
+                city: "Austin",
+                salary: 92000
+            },
+            {
+                firstname: "Karen",
+                lastname: "White",
+                age: 26,
+                gender: "Female",
+                city: "Charlotte",
+                salary: 63000
+            },
+            {
+                firstname: "Liam",
+                lastname: "Harris",
+                age: 37,
+                gender: "Male",
+                city: "Nashville",
+                salary: 85000
+            },
+            {
+                firstname: "Mia",
+                lastname: "Martin",
+                age: 30,
+                gender: "Female",
+                city: "Portland",
+                salary: 76000
+            },
+            {
+                firstname: "Noah",
+                lastname: "Garcia",
+                age: 39,
+                gender: "Male",
+                city: "Detroit",
+                salary: 89000
+            },
+            {
+                firstname: "Olivia",
+                lastname: "Rodriguez",
+                age: 24,
+                gender: "Female",
+                city: "Las Vegas",
+                salary: 61000
+            },
+            {
+                firstname: "Paul",
+                lastname: "Martinez",
+                age: 41,
+                gender: "Male",
+                city: "Kansas City",
+                salary: 91000
+            },
+            {
+                firstname: "Quinn",
+                lastname: "Hernandez",
+                age: 34,
+                gender: "Female",
+                city: "Orlando",
+                salary: 74000
+            },
+            {
+                firstname: "Ryan",
+                lastname: "Lopez",
+                age: 36,
+                gender: "Male",
+                city: "Indianapolis",
+                salary: 83000
+            },
+            {
+                firstname: "Sophia",
+                lastname: "Gonzalez",
+                age: 29,
+                gender: "Female",
+                city: "Columbus",
+                salary: 71000
+            },
+            {
+                firstname: "Tom",
+                lastname: "Perez",
+                age: 43,
+                gender: "Male",
+                city: "San Antonio",
+                salary: 93000
+            },
+            {
+                firstname: "Uma",
+                lastname: "Sanchez",
+                age: 27,
+                gender: "Female",
+                city: "Jacksonville",
+                salary: 67000
+            },
+            {
+                firstname: "Victor",
+                lastname: "Ramirez",
+                age: 35,
+                gender: "Male",
+                city: "Memphis",
+                salary: 81000
+            },
+            {
+                firstname: "Wendy",
+                lastname: "Campbell",
+                age: 31,
+                gender: "Female",
+                city: "Baltimore",
+                salary: 77000
+            },
+            {
+                firstname: "Xavier",
+                lastname: "Parker",
+                age: 40,
+                gender: "Male",
+                city: "Milwaukee",
+                salary: 90000
+            },
+            {
+                firstname: "Yara",
+                lastname: "Evans",
+                age: 28,
+                gender: "Female",
+                city: "New Orleans",
+                salary: 69000
+            },
+            {
+                firstname: "Zack",
+                lastname: "Edwards",
+                age: 37,
+                gender: "Male",
+                city: "Richmond",
+                salary: 86000
+            },
+            {
+                firstname: "Anna",
+                lastname: "Collins",
+                age: 32,
+                gender: "Female",
+                city: "Salt Lake City",
+                salary: 73000
+            },
+            {
+                firstname: "Ben",
+                lastname: "Stewart",
+                age: 44,
+                gender: "Male",
+                city: "Louisville",
+                salary: 94000
+            },
+            {
+                firstname: "Chloe",
+                lastname: "Morris",
+                age: 25,
+                gender: "Female",
+                city: "Raleigh",
+                salary: 64000
+            },
+            {
+                firstname: "David",
+                lastname: "Rogers",
+                age: 39,
+                gender: "Male",
+                city: "Oklahoma City",
+                salary: 87000
+            },
+            {
+                firstname: "Ella",
+                lastname: "Reed",
+                age: 30,
+                gender: "Female",
+                city: "Tucson",
+                salary: 75000
+            }, {
+                firstname: "Peter",
+                lastname: "Jones",
+                age: 35,
+                gender: "Male",
+                city: "Chicago",
+                salary: 80000
+            },
+            {
+                firstname: "Alice",
+                lastname: "Williams",
+                age: 28,
+                gender: "Female",
+                city: "Houston",
+                salary: 70000
+            },
+            {
+                firstname: "Bob",
+                lastname: "Brown",
+                age: 40,
+                gender: "Male",
+                city: "Dallas",
+                salary: 90000
+            },
+            {
+                firstname: "Charlie",
+                lastname: "Davis",
+                age: 32,
+                gender: "Male",
+                city: "Miami",
+                salary: 65000
+            },
+            {
+                firstname: "Diana",
+                lastname: "Miller",
+                age: 29,
+                gender: "Female",
+                city: "Seattle",
+                salary: 82000
+            },
+            {
+                firstname: "Eve",
+                lastname: "Wilson",
+                age: 31,
+                gender: "Female",
+                city: "Boston",
+                salary: 78000
+            }
+        ];
+
+        function createth(text) {
+            let th = document.createElement("th")
+            th.innerText = text
+            return th
+        }
+
+        function createtd(text) {
+            let td = document.createElement("td")
+            td.innerText = text
+            return td
+        }
+        var i = 0;
+        var step = 5;
+        function genui() {
+            document.getElementById("tb").innerHTML = ""
+            employees.slice(i, i + step).forEach(function (emp) {
+                var tr = document.createElement("tr")
+                tr.appendChild(createtd(emp.firstname))
+                tr.appendChild(createtd(emp.lastname))
+                tr.appendChild(createtd(emp.age))
+                tr.appendChild(createtd(emp.gender))
+                tr.appendChild(createtd(emp.city))
+                tr.appendChild(createtd(emp.salary))
+                document.getElementById('tb').appendChild(tr)
+            })
+            document.getElementById("p").disabled = i === 0
+            document.getElementById("n").disabled = i + step >= employees.length
+        }
+
+
+        genui()
+        var cnt = 0
+        function sortby(val, e) {
+            document.querySelectorAll("#emp span").forEach(function (el) {
+                el.innerHTML = ""
+            })
+            // console.dir(e)
+
+            cnt++
+            if (cnt % 2 == 0) {
+                employees.sort(function (a, b) {
+                    if (a[val] > b[val]) {
+                        return -1
+                    }
+                    else {
+                        return 1
+                    }
+                })
+                e.target.childNodes.forEach(function (ele) {
+                    ele.innerHTML = "&#8593"
+                })
+            }
+            else {
+                employees.sort(function (a, b) {
+                    if (a[val] > b[val]) {
+                        return 1
+                    }
+                    else {
+                        return -1
+                    }
+                })
+                e.target.childNodes.forEach(function (ele) {
+                    ele.innerHTML = "&#8595"
+                })
+            }
+            document.getElementById('tb').innerHTML = " "
+            genui()
+        }
+        let created = false;
+
+        function perpage(e) {
+            step = +e.target.value;
+
+            if (!created) {
+                let h = document.createElement("h5");
+                h.innerText = "Do you want to save changes in PerPage ?";
+
+                let save = document.createElement("input");
+                save.type = "radio";
+                save.name = "s";
+
+                let saveLabel = document.createElement("label");
+                saveLabel.innerText = " Yes ";
+
+                let not = document.createElement("input");
+                not.type = "radio";
+                not.name = "s";
+                not.checked = true;
+
+                let notLabel = document.createElement("label");
+                notLabel.innerText = " No ";
+
+                document.body.append(h, save, saveLabel, not, notLabel);
+
+                save.onclick = function () {
+                    document.getElementById("pp").disabled = true;
+                };
+
+                not.onclick = function () {
+                    document.getElementById("pp").disabled = false;
+                };
+
+                created = true;  
+            }
+
+            genui();
+        }
+
+        var pagecnt=1
+        function next() {
+            if (i + step < employees.length) {
+                i += step
+                genui()
+            }
+            pagecnt++
+            document.getElementById("pagenum").innerText=pagecnt
+            
+        }
+        function prev() {
+            if (i - step >= 0) {
+                i -= step
+                genui()
+            }
+            pagecnt--
+            document.getElementById("pagenum").innerText=pagecnt
+        }
+        console.log(employees.length)
+
+
+    </script>
+</body>
+
+</html>
