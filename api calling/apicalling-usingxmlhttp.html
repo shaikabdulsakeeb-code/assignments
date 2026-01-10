@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>products</title>
+</head>
+<body>
+    <input type="text" id="ip" placeholder="How many products">
+    <button onclick="get()">Get</button>
+    <h1 id="h"></h1>
+    <table id="t1" border="1">
+    </table>
+    <script>
+        var products;
+        function get(){
+            // console.dir(JSON.parse(http.response))
+            document.getElementById("h").innerText="Dummy Products Got using XMLHttpRequest"
+            var http=new XMLHttpRequest()
+            var s=+document.getElementById("ip").value
+            http.open("GET","https://dummyjson.com/products?limit="+s,false)
+            http.send()
+            products=JSON.parse(http.response).products
+            console.log(products)
+            genui()
+            
+        }
+        function createtd(text) {
+            let td = document.createElement("td")
+            td.innerText = text
+            return td
+        }
+        function genui(){
+            document.getElementById("t1").innerHTML=""
+            products.forEach((p)=>{
+                let ntr=document.createElement("tr")
+                let tdi=document.createElement("td")
+                let i=document.createElement("img")
+                i.src=p.thumbnail
+                tdi.appendChild(i)
+                ntr.appendChild(tdi)
+                ntr.appendChild(createtd(p.title))
+                ntr.appendChild(createtd(p.category))
+                ntr.appendChild(createtd(p.price))
+                document.getElementById("t1").appendChild(ntr)
+            })
+        }
+        </script>
+</body>
+</html>
