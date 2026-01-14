@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>changing background color of div using toggle button</title>
+    <style>
+        .box{
+            border: 1px solid black;
+            height: 100px;
+            width: 100px;
+            margin-bottom: 10px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="box" id="b1"></div>
+    <button id="toggle">Toggle</button>
+    <script>
+        const  b1=document.getElementById('b1')
+        const toggle=document.getElementById('toggle')
+        toggle.addEventListener('click',()=>{
+           if(b1.style.backgroundColor==="yellow"){
+               b1.style.backgroundColor="white"
+            }
+            else{
+               b1.style.backgroundColor="yellow"
+
+           }
+           
+           
+        })
+       
+    </script>
+</body>
+</html>

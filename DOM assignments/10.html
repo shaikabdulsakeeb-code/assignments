@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact cards</title>
+    <style>
+        .ip {
+            display: block;
+            margin: 5px;
+        }
+
+        .contacts {
+            border: 3px solid red;
+            height: 150px;
+            width: 350px;
+            border-radius: 10px;
+            background-color: yellow;
+            margin: 10px;
+            /* display: flex;
+            flex-direction: column;
+            /* justify-content: center; */
+            /* align-items: center;  */
+            padding-left: 30px;
+            justify-content: center;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .contacts span {
+            display: block;
+        }
+
+        .contacts img {
+            align-self: center;
+            height: 50px;
+            width: 50px;
+            border-radius: 50%;
+            align-items: center;
+            object-fit: cover;
+        }
+    </style>
+</head>
+
+<body>
+    <form action="" id="fm">
+        <label for="Name">Name:</label><input type="text" id="Name" class="ip">
+        <label for="Number">Number:</label><input type="text" id="Number" class="ip" required>
+        <label for="email">Email:</label><input type="email" id="email" class="ip">
+        <label for="img">Image:</label><input type="file" id="img" name="profile" class="ip" accept=".png,.jpg">
+        <button type="button" id="add">Add Contact</button>
+    </form>
+    <div id="c">
+
+    </div>
+    <script>
+        document.getElementById("add").addEventListener('click', function () {
+            const name = document.getElementById("Name").value
+            const number = document.getElementById("Number").value
+            if (number === "") {
+                alert("Please enter the number it is required")
+            }
+            else {
+                const mail = document.getElementById("email").value
+                const pr = document.getElementById("fm").profile.files[0]
+                console.log(pr)
+                let con = document.createElement("div")
+                con.classList.add('contacts')
+
+                let img = document.createElement("img")
+                img.src = pr.name
+                con.appendChild(img)
+
+                let nam = document.createElement("span")
+                nam.innerText = "Name : " + name
+                con.appendChild(nam)
+
+                let num = document.createElement("span")
+                num.innerText = "Number : " + number
+                con.appendChild(num)
+
+                let email = document.createElement("span")
+                email.innerText = "Email : " + mail
+                con.appendChild(email)
+
+                document.getElementById("c").appendChild(con)
+                document.getElementById("Name").value = ""
+                document.getElementById("Number").value = ""
+                document.getElementById("email").value = ""
+                document.getElementById("fm").profile.files[0].name = ""
+            }
+        })
+    </script>
+</body>
+
+</html>

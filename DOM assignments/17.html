@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todolist-app</title>
+    <style>
+        
+    </style>
+</head>
+<body>
+    <input type="text" id="task"><button onclick="addtodo()">Add Task</button>
+    <div id="tdlist">
+
+    </div>
+    <script>
+        var task=document.getElementById('task')
+        var tdlist=document.getElementById('tdlist')
+        var tasks=[]
+        function addtodo(){
+            let t=task.value
+            tasks.push(t)
+            todoui()
+        }
+        function todoui(){
+            tdlist.innerText=""
+            tasks.forEach(function(t){
+                let td=document.createElement("div")
+                let name=document.createElement("span")
+                name.innerText=t
+                let donebtn=document.createElement("button")
+                donebtn.addEventListener('click',function(){
+                    name.innerHTML="<strike>"+name+"</strike>"
+                    
+                })
+            })
+        }
+    </script>
+</body>
+</html>

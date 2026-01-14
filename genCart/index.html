@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.6.7/dist/axios.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        #ecom {
+            display: flex;
+        }
+
+        /* #cart {
+             display: flex;
+            flex-wrap: wrap;
+            justify-content: space-evenly;
+            border: 1px solid;
+            width: 26%
+        } */
+         #cart {
+            border: 1px solid;
+            width: 26%
+        }
+
+        #products {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-evenly;
+            width: 70%;
+        }    
+        #cartList div {
+            text-align: center;
+            box-shadow: 1px 1px 3px 1px;
+            border-radius: 10px;
+            margin: 5px;
+            padding: 5px;
+        }
+        #products div {
+            width: 150px;
+            text-align: center;
+            box-shadow: 1px 1px 3px 1px;
+            border-radius: 10px;
+            margin: 5px;
+            padding: 5px;
+        }
+
+        #products div img {
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 id="d2"></h1>
+    <h3>products</h3>
+    <div id="ecom">
+
+        <div id="products">
+        </div>
+        <div id="cart">
+            <h3>Cart</h3>
+            <div id="cartList">
+
+            </div>
+        </div>
+    </div>
+    <button onclick="nextset()">Next</button>
+    <script>
+        var s = 0;
+        var cartItems = [];
+        function genTable(products) {
+            products.forEach(function (product) {
+                var productCard = document.createElement("div")
+                var productImg = document.createElement("img")
+                productImg.src = product.thumbnail
+                productCard.appendChild(productImg)
+                var productTitle = document.createElement("h4")
+                productTitle.innerText = product.title
+                productCard.appendChild(productTitle)
+                var addToCartBtn = document.createElement("button")
+                addToCartBtn.innerText = 'Add To Cart'
+                addToCartBtn.onclick = function () { addToCart(product) }
+                var productPrice = document.createElement("h4")
+                productPrice.innerText = product.price
+                productCard.appendChild(productPrice)
+                productCard.appendChild(addToCartBtn)
+
+                document.getElementById('products').appendChild(productCard)
+            })
+        }
+        function addToCart(item) {
+            cartItems.push(item)
+            genCart();
+        }
+
+        function genCart() {
+            document.getElementById("cartList").innerHTML = ""
+            cartItems.forEach(function (product) {
+               var c1 = document.createElement("div")
+                var c1_productImg = document.createElement("img")
+                c1_productImg.src = cartItems.thumbnail
+                c1.appendChild(c1_productImg)
+                var c1_productTitle = document.createElement("h4")
+                c1_productTitle.innerText = cartItems.title
+                c1.appendChild(c1_productTitle)
+                var c1_productPrice = document.createElement("h4")
+                c1_productPrice.innerText = cartItems.price
+                c1.appendChild(c1_productPrice)
+
+                document.getElementById('cartList').appendChild(c1)
+            })
+        }
+
+        // function getProducts() {
+        //     var http = new XMLHttpRequest()
+        //     http.open("GET", "https://dummyjson.com/product?limit=10&skip=" + s, true)
+        //     http.send()
+        //     console.log(http.response);
+        //     http.onreadystatechange = function () {
+        //         if (http.readyState == 4) {
+        //             var products = JSON.parse(http.response).products;
+        //             genTable(products)
+        //         }
+        //     }
+        // }
+
+        // function getProducts() {
+        //     fetch("https://dummyjson.com/product?limit=10&skip=" + s)
+        //         .then(function (res) { return res.json() })
+        //         .then(function (data) { console.log(data.products) })
+        //     console.log("HI");
+        // }
+        function getProducts() {
+            axios.get("https://dummyjson.com/product?limit=40&skip=100")
+                .then(function (res) { genTable(res.data.products); })
+            console.log("HI");
+        }
+        function nextset() {
+            s = s + 10;
+            getProducts();
+        }
+
+        getProducts()
+        // http.onloadend = function () {
+        //     console.log(http.response);
+        // }
+
+        // console.log(http.readyState);
+        // console.dir(http)
+        // http.onreadystatechange = function () {
+        //     if (http.readyState === 1) {
+        //         document.getElementById("d1").innerText = "request sent"
+        //     }
+        //     if (http.readyState === 2) {
+        //         document.getElementById("d1").innerText = "request accepted"
+        //     }
+        //     if (http.readyState === 3) {
+        //         document.getElementById("d1").innerText = "Loading...."
+        //     }
+        //     if (http.readyState === 4) {
+        //         document.getElementById("d1").innerText = "Ipoindira chusko"
+        //     }
+        // }
+
+
+        // http.onload = function () {
+        //     // alert("Load Vachindi ramana")
+        //     document.getElementById("d1").innerText = "Loadinguuu.."
+        // }
+        // http.onloadend = function () {
+        //     // alert("Load Ethali ramana")
+        //     document.getElementById("d1").innerText = "Over.."
+
+        // }
+    </script>
+</body>
+
+</html>

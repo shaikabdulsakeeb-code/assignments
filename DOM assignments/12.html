@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Cards-edit,delete,sort</title>
+
+    <style>
+        .ip {
+            display: block;
+            margin: 5px;
+        }
+
+        .contacts {
+            border: 3px solid red;
+            height: 170px;
+            width: 350px;
+            border-radius: 10px;
+            background-color: yellow;
+            margin: 10px;
+            padding-left: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .contacts span {
+            display: block;
+        }
+
+        .contacts img {
+            align-self: center;
+            height: 50px;
+            width: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        #mainBtn {
+            margin-top: 5px;
+            width: 120px;
+            color: white;
+            background-color: blue;
+        }
+    </style>
+</head>
+
+<body>
+
+    <form id="fm">
+        <label>Name:</label>
+        <input type="text" id="Name" class="ip">
+
+        <label>Number:</label>
+        <input type="text" id="Number" class="ip">
+
+        <label>Email:</label>
+        <input type="email" id="email" class="ip">
+
+        <label>Image:</label>
+        <input type="file" name="profile" class="ip" accept=".png,.jpg">
+
+        <button type="button" id="mainBtn" onclick="addOrUpdate()">Add Contact</button>
+    </form>
+
+    <div id="c">
+
+    </div>
+
+    <script>
+        var contacts = []
+        var editIndex = -1
+        var sortAsc = true
+
+        var sortBtn = document.createElement("button")
+        sortBtn.style.display = "none"
+        sortBtn.innerHTML = "⬇ A-Z"
+        sortBtn.onclick = function () {
+            contacts.sort(function (a, b) {
+                return sortAsc
+                    ? a.name.localeCompare(b.name)
+                    : b.name.localeCompare(a.name)
+            })
+
+            sortAsc = !sortAsc
+            sortBtn.innerHTML = sortAsc ? "⬇ A-Z" : "⬆ Z-A"
+
+            generateContacts()
+        }
+
+        document.body.insertBefore(sortBtn, document.getElementById("c"))
+
+        function addOrUpdate() {
+            let name = document.getElementById("Name").value
+            let number = document.getElementById("Number").value
+            let mail = document.getElementById("email").value
+            let pr = document.getElementById("fm").profile.files[0]
+
+            if (number === "") {
+                alert("Number is required")
+                return
+            }
+
+            let obj = {
+                name: name,
+                number: number,
+                mail: mail,
+                img: pr.name
+            }
+
+            if (editIndex === -1) {
+                contacts.push(obj)
+            } else {
+                contacts[editIndex] = obj
+                editIndex = -1
+                setAddMode()
+            }
+            generateContacts()
+            document.getElementById("fm").reset()
+        }
+
+        function generateContacts() {
+            let container = document.getElementById("c")
+            container.innerHTML = ""
+            sortBtn.style.display = contacts.length > 0 ? "block" : "none"
+
+            contacts.forEach((con, index) => {
+                let card = document.createElement("div")
+                card.classList.add('contacts')
+
+                if (con.img) {
+                    let img = document.createElement("img")
+                    img.src = con.img
+                    console.log(img)
+                    card.appendChild(img)
+                }
+
+                let s1 = document.createElement("span")
+                s1.innerText = "Name : " + con.name
+                card.appendChild(s1)
+
+                let s2 = document.createElement("span")
+                s2.innerText = "Number : " + con.number
+                card.appendChild(s2)
+
+                let s3 = document.createElement("span")
+                s3.innerText = "Email : " + con.mail
+                card.appendChild(s3)
+
+                let editBtn = document.createElement("button")
+                editBtn.innerText = "Edit"
+                editBtn.onclick = function () {
+                    editContact(index)
+                }
+
+                let delBtn = document.createElement("button")
+                delBtn.innerText = "Delete"
+                delBtn.onclick = function () {
+                    deleteContact(index)
+                }
+
+                card.appendChild(editBtn)
+                card.appendChild(delBtn)
+
+                container.appendChild(card)
+            })
+        }
+
+        function editContact(index) {
+            document.getElementById("Name").value = contacts[index].name
+            document.getElementById("Number").value = contacts[index].number
+            document.getElementById("email").value = contacts[index].mail
+
+            editIndex = index
+            setEditMode()
+        }
+
+        function deleteContact(index) {
+            let confirmDelete = confirm("Are you sure you want to delete this contact?")
+
+            if (confirmDelete) {
+                contacts.splice(index, 1)
+                generateContacts()
+            }
+        }
+
+
+        function setEditMode() {
+            let btn = document.getElementById("mainBtn")
+            btn.innerText = "Save Contact"
+            btn.style.backgroundColor = "orange"
+        }
+
+        function setAddMode() {
+            let btn = document.getElementById("mainBtn")
+            btn.innerText = "Add Contact"
+            btn.style.backgroundColor = "blue"
+        }
+    </script>
+
+</body>
+
+</html>

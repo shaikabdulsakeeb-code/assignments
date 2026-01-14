@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chair occupency</title>
+    <style>
+        .seat img{
+            height: 150px;
+            
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Occupied : <span id="occupy">0</span></h1>
+    <h1>Available : <span id="av">6</span></h1>
+
+    <div id="seats" class="seat">
+        <img src="chair.png" alt="1" id="one">
+        <img src="chair.png" alt="2" id="two">
+        <img src="chair.png" alt="3" id="three">
+        <img src="chair.png" alt="4" id="four">
+        <img src="chair.png" alt="5" id="five">
+        <img src="chair.png" alt="6" id="six">
+    </div>
+    <script>
+        var seats=document.querySelectorAll("#seats img")
+        var occupy=document.getElementById("occupy")
+        var av=document.getElementById("av")
+        var seats_available=6,seats_occupied=0
+        seats.forEach(function(seat){
+            seat.addEventListener('click',function(e){
+                if(seat.style.opacity=="0.5"){
+                    seat.style.opacity="1"
+                    seats_available++
+                    seats_occupied--
+                    occupy.innerText=seats_occupied
+                    av.innerText=seats_available
+                }
+                else{
+                    seat.style.opacity="0.5"
+                    seats_available--
+                    seats_occupied++
+                    occupy.innerText=seats_occupied
+                    av.innerText=seats_available
+                }
+            })
+        })
+    </script>
+</body>
+
+</html>

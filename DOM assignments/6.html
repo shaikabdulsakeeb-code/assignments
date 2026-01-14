@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adding images by taking the input</title>
+    <style>
+        .imglayout {
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="text" id="ip" placeholder="Enter the url of image">
+    <button id="addimg">Add image</button>
+    <div class="imglayout" id="il"></div>
+    <script>
+        var ip = document.getElementById("ip")
+        var bt = document.getElementById("addimg")
+        var imgar = []
+        bt.addEventListener('click', function () {
+            let input = ip.value
+            ip.value = ""
+            imgar.push(input)
+            genimg()
+        })
+        function genimg() {
+            document.getElementById("il").innerHTML = ""
+            imgar.forEach(function (im) {
+                let image = document.createElement("img")
+                image.src = im
+                image.style.height = "150px"
+                image.style.width = "200px"
+                image.style.objectFit = "cover"
+                document.getElementById("il").appendChild(image)
+            })
+        }
+    </script>
+</body>
+
+</html>

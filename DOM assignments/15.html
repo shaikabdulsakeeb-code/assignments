@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Score ball by ball-cricket</title>
+    <style>
+        .sc div {
+            border: 1px solid black;
+            height: 80px;
+            width: 60px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+            font-size: 26px;
+        }
+
+        .sc {
+            margin-top: 50px;
+            display: flex;
+            flex-wrap: wrap;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>
+        Score : <span id="runs">0</span> - <span id="wicks">0</span>
+    </h1>
+    <div id="btns">
+        <button id="zero">0</button>
+        <button id="one">1</button>
+        <button id="two">2</button>
+        <button id="three">3</button>
+        <button id="four">4</button>
+        <button id="five">5</button>
+        <button id="six">6</button>
+        <button id="wide">Wide</button>
+        <button id="wicket">Wicket</button>
+    </div>
+    <div id="board" class="sc">
+    </div>
+
+    <script>
+        var run_sscore = 0
+        var wicket_cnt = 0
+        var board = document.getElementById("board")
+        var runs = document.getElementById("runs")
+        var wicks = document.getElementById("wicks")
+        document.getElementById("zero").addEventListener('click', function () {
+            run_sscore = run_sscore
+            runs.innerText = run_sscore
+            let z = document.createElement("div")
+            z.innerText = "0"
+            z.style.backgroundColor = "white"
+            board.appendChild(z)
+        })
+        document.getElementById("one").addEventListener('click', function () {
+            run_sscore = run_sscore + 1
+            runs.innerText = run_sscore
+            let o = document.createElement("div")
+            o.innerText = "1"
+            o.style.backgroundColor = "rgb(122, 186, 230)"
+            board.appendChild(o)
+        })
+        document.getElementById("two").addEventListener('click', function () {
+            run_sscore = run_sscore + 2
+            runs.innerText = run_sscore
+            let tw = document.createElement("div")
+            tw.innerText = "2"
+            tw.style.backgroundColor = "rgb(44, 109, 251)"
+            board.appendChild(tw)
+        })
+
+        document.getElementById("three").addEventListener('click', function () {
+            run_sscore = run_sscore + 3
+            runs.innerText = run_sscore
+            let thre = document.createElement("div")
+            thre.innerText = "3"
+            thre.style.backgroundColor = "blue"
+            board.appendChild(thre)
+        })
+        document.getElementById("four").addEventListener('click', function () {
+            run_sscore = run_sscore + 4
+            runs.innerText = run_sscore
+            let four = document.createElement("div")
+            four.innerText = "4"
+            four.style.backgroundColor = "rgb(122, 235, 124)"
+            board.appendChild(four)
+        })
+        document.getElementById("five").addEventListener('click', function () {
+            run_sscore = run_sscore + 5
+            runs.innerText = run_sscore
+            let five = document.createElement("div")
+            five.innerText = "5"
+            five.style.backgroundColor = "rgb(146, 246, 231)"
+            board.appendChild(five)
+        })
+
+        document.getElementById("six").addEventListener('click', function () {
+            run_sscore = run_sscore + 6
+            runs.innerText = run_sscore
+            let six = document.createElement("div")
+            six.innerText = "6"
+            six.style.backgroundColor = "rgb(11, 222, 39)"
+            board.appendChild(six)
+        })
+
+        document.getElementById("wide").addEventListener('click', function () {
+            run_sscore = run_sscore + 1
+            runs.innerText = run_sscore
+            let wide = document.createElement("div")
+            wide.innerText = "Wide"
+            wide.style.width = "80px"
+            wide.style.height = "50px"
+            wide.style.marginTop = "10px"
+            wide.style.backgroundColor = "rgb(232, 236, 219)"
+            board.appendChild(wide)
+        })
+        document.getElementById("wicket").addEventListener('click', function () {
+            wicket_cnt = wicket_cnt + 1
+            wicks.innerText = wicket_cnt
+            let wickie = document.createElement("div")
+            wickie.innerText = "Wicket"
+            wickie.style.width = "100px"
+            wickie.style.backgroundColor = "red"
+            board.appendChild(wickie)
+            if (wicket_cnt == 10) {
+                let lbtns = document.querySelectorAll("#btns button")
+                lbtns.forEach(function (bt) {
+                    bt.disabled = true
+                })
+                let h=document.createElement("h1")
+                h.innerText="Wickets over"
+                document.body.append(h)
+            }
+        })
+
+
+
+    </script>
+</body>
+
+</html>

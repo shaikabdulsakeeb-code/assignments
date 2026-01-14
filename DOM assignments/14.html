@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact table-edit,delete,sort</title>
+
+    <style>
+        .ip {
+            display: block;
+            margin: 5px;
+        }
+
+
+
+        .contacts span {
+            display: block;
+        }
+
+        .contacts img {
+            align-self: center;
+            height: 50px;
+            width: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .sbtn {
+            margin-top: 10px;
+            margin-right: 10px;
+            margin-bottom: 10px;
+        }
+
+        #mainBtn {
+            margin-top: 5px;
+            width: 120px;
+            color: white;
+            background-color: blue;
+        }
+    </style>
+</head>
+
+<body>
+
+    <form id="fm">
+        <label>Name:</label>
+        <input type="text" id="Name" class="ip">
+
+        <label>Number:</label>
+        <input type="text" id="Number" class="ip">
+
+        <label>Email:</label>
+        <input type="email" id="email" class="ip">
+
+        <button type="button" id="mainBtn" onclick="addOrUpdate()">Add Details</button>
+    </form>
+
+    <button class="sbtn" onclick="sortbyasc()">⬇ A-Z</button>
+    <button class="sbtn" onclick="sortbydsc()">⬆ Z-A</button>
+
+    <table border="2">
+        <thead>
+            <tr>
+                <th>Fullname</th>
+                <th>Contact no.</th>
+                <th>Email</th>
+                <th>Modify</th>
+                <th>Remove</th>
+            </tr>
+        </thead>
+        <tbody id="tb">
+
+        </tbody>
+    </table>
+    <script>
+
+        var contacts = []
+        var editIndex = -1
+        function addOrUpdate() {
+            let name = document.getElementById("Name").value
+            let number = document.getElementById("Number").value
+            let mail = document.getElementById("email").value
+            
+
+            if (number === "") {
+                alert("Number is required")
+                return
+            }
+
+            let obj = {
+                name: name,
+                number: number,
+                mail: mail
+            }
+
+
+            if (editIndex === -1) {
+                contacts.push(obj)
+            } else {
+                contacts[editIndex] = obj
+                editIndex = -1
+                setAddMode()
+            }
+
+            document.getElementById("fm").reset()
+            generateContacts()
+        }
+        function sortbyasc(){
+            contacts.sort(function(a,b){
+                if(a.name>b.name){
+                    return 1
+                }
+                else{
+                    return -1
+                }
+            })
+            generateContacts()
+        }
+        function sortbydsc(){
+            contacts.sort(function(a,b){
+                if(a.name>b.name){
+                    return -1
+                }
+                else{
+                    return 1
+                }
+            })
+            generateContacts()
+        }
+        function generateContacts() {
+            var tb=document.getElementById("tb")
+            tb.innerHTML=""
+            contacts.forEach(function(con,idx){
+                let ntr=document.createElement("tr")
+                let ftd=document.createElement("td")
+                ftd.innerText=con.name
+                let ctd=document.createElement("td")
+                ctd.innerText=con.number
+                let mtd=document.createElement("td")
+                mtd.innerText=con.mail
+                let editBtn=document.createElement("button")
+                let etd=document.createElement("td")
+                editBtn.innerText="Edit"
+                editBtn.style.backgroundColor="yellow"
+                editBtn.onclick=()=>{
+                    editContact(idx)
+                }
+                etd.appendChild(editBtn)
+                let delBtn=document.createElement("button")
+                let dtd=document.createElement("td")
+                dtd.appendChild(delBtn)
+                delBtn.innerText="Delete"
+                delBtn.style.backgroundColor="red"
+                delBtn.onclick=()=>{
+                    deleteContact(idx)
+                }
+                ntr.append(ftd,ctd,mtd,etd,dtd)
+                tb.appendChild(ntr)
+            })
+        }
+
+        function editContact(index) {
+            document.getElementById("Name").value = contacts[index].name
+            document.getElementById("Number").value = contacts[index].number
+            document.getElementById("email").value = contacts[index].mail
+
+            editIndex = index
+            setEditMode()
+        }
+
+        function deleteContact(index) {
+            if (confirm("Delete this contact?")) {
+                contacts.splice(index, 1)
+                generateContacts()
+            }
+        }
+
+        function setEditMode() {
+            let btn = document.getElementById("mainBtn")
+            btn.innerText = "Save Contact"
+            btn.style.backgroundColor = "orange"
+        }
+
+        function setAddMode() {
+            let btn = document.getElementById("mainBtn")
+            btn.innerText = "Add Details"
+            btn.style.backgroundColor = "blue"
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add-stdent</title>
+    <style>
+        body {
+            background-color: pink;
+        }
+
+        #ip {
+            width: 300px;
+            height: 40px;
+            border-radius: 10px;
+            padding: 10px;
+        }
+
+        #add {
+            background-color: rgb(93, 187, 187);
+            color: black;
+            height: 60px;
+            border-radius: 10px;
+            width: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 id="pr">Add Students</h1>
+    <input type="text" id="ip">
+    <button id="add">Add student</button>
+    <ul id="slist"></ul>
+    <script>
+        document.getElementById("add").addEventListener('click', function () {
+            let s = document.getElementById("ip")
+            if (s.value === "" || s.value === " ") {
+                document.getElementById("pr").innerText = "Please Enter the name !"
+                document.getElementById("pr").style.color = "red"
+            }
+            else {
+                let st = document.createElement("li")
+                st.style.color="red"
+                st.style.fontSize="24px"
+                document.getElementById("pr").innerText = "Add students"
+                st.innerText = s.value
+                document.getElementById("slist").appendChild(st)
+                s.value = ""
+            }
+        })
+    </script>
+</body>
+
+</html>

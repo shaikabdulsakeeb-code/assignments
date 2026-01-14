@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roatating images on clicking buttons</title>
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            flex-direction: row;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        .carasoul {
+            width: 350px;
+        }
+
+        .btn {
+            height: 50px;
+            width: 50px;
+            font-size: 30px;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background-color: rgb(216, 208, 208);
+        }
+
+        .btn:hover {
+            background-color: rgb(202, 200, 200);
+        }
+    </style>
+</head>
+
+<body>
+    <button class="btn" id="prev">&#8592;</button>
+    <img src="ironman.jpg" alt="" id="i" class="carasoul">
+    <button class="btn" id="nxt">&#8594;</button>
+
+    <script>
+        var imgar = ['ironman.jpg', 'captain.jpg', 'thor.jpg', 'hulk.jpg', 'blackwidow.jpg', 'hawkye.jpg', 'spiderman.jpg', 'drstrange.jpg', 'loki.jpg']
+        var cnt = 0
+        const i = document.getElementById('i')
+        document.getElementById("nxt").addEventListener('click', function () {
+
+            cnt++
+            if (cnt === imgar.length) {
+                cnt = 0
+            }
+            i.src = imgar[cnt]
+        })
+        document.getElementById("prev").addEventListener('click', function () {
+            cnt--
+            if (cnt < 0) {
+                cnt = imgar.length - 1
+            }
+            i.src = imgar[cnt]
+        })
+    </script>
+</body>
+
+</html>
