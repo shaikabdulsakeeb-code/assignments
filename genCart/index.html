@@ -226,8 +226,8 @@
                 total.innerText = item.price * item.quantity
                 cli.appendChild(total)
 
-                totalPrice = cartItems.reduce(function (acc, curr) {
-                    return acc + (curr.price * curr.quantity)
+                totalPrice = cartItems.reduce(function (sum, pr) {
+                    return sum + (pr.price * pr.quantity)
                 }, 0)
 
                 document.getElementById("cartList").appendChild(cli)
