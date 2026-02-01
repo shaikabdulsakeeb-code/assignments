@@ -24,6 +24,7 @@ body{
 .navbar img{
     height: 75px;
     width: 75px;
+    border-radius: 100%;
 }
 .navbar a{
     text-decoration: none;
@@ -45,6 +46,11 @@ body{
     border: 0.5px solid white;
     border-radius: 3px;
     padding: 5px;
+}
+#lbtn:hover{
+    background-color: #fff;
+    color: rgb(19, 16, 16);
+    transition: 0.3s ease-in-out;
 }
 #login button{
     margin-left: 10px;
@@ -115,14 +121,59 @@ body{
     transform: scale(1.05);
     transition: transform 0.3s ease-in-out;
 }
-
+#fhead{
+    color: greenyellow;
+    text-align: center;
+     margin-bottom: 40px;
+     font-size: 40px;
+}
+.Features{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    color: #fff;
+    border: 1px solid white;
+    box-shadow: 0 0 10px #ffca2c;
+    padding: 30px;
+    margin: 30px;
+    border-radius: 25px;
+}
+.Features .item h1{
+    margin-bottom: 25px;
+}
+.Features:hover .item img{
+    transform: scale(1.08);
+    transition: transform 0.3s ease-in-out;
+}
+.Features .item img{
+    width: 200px;
+    border-radius: 25px;
+    margin-bottom: 40px;
+}
+.Features .item img:hover{
+    transform: scale(1.05);
+    transition: transform 0.3s ease-in-out;
+}
+.Features .item p{
+    width:350px;
+    line-height: 1.5;
+}
+.footer{
+    text-align: center;
+    color: white;
+    padding: 20px;
+    background-color: rgb(19, 16, 16);
+    border-top: 1px solid white;
+    margin-top: 40px;
+}
 </style>
 </head>
 
 <body>
 
 <div class="navbar">
-    <img src="logo.jpg" alt="">
+    <img src="logo.jpeg" alt="">
     <a href="#">Home</a>
     <a href="#">Features</a>
     <a href="#">Pricing</a>
@@ -152,6 +203,26 @@ body{
     </div>
     <img src="DOM assignments/spiderman.jpg" id="abtimg">
 </div>
-
+<h1 id="fhead">Marvel Cinematic Universe</h1>
+<div class="Features">
+    <div class="item">
+        <img src="DOM assignments/captain.jpg" alt="">
+        <h1>Captain America</h1>
+        <p>Steven Grant Rogers is a fictional character primarily portrayed by Chris Evans in the Marvel Cinematic Universe (MCU) media franchise—based on the Marvel Comics character of the same name—commonly known by his superhero alias, Captain America.</p>
+    </div>
+    <div class="item">
+        <img src="DOM assignments/ironman.jpg" alt="">
+        <h1>Iron Man</h1>
+        <p>Iron Man is a 2008 American superhero film based on the Marvel Comics character of the same name. Produced by Marvel Studios and distributed by Paramount Pictures,[a] it is the first film in the Marvel Cinematic Universe (MCU).</p>
+    </div>
+    <div class="item">
+        <img src="DOM assignments/thor.jpg" alt="">
+        <h1>Thor</h1>
+        <p>Thor Odinson is a character portrayed by Chris Hemsworth in the Marvel Cinematic Universe (MCU) media franchise, based on the Marvel Comics character of the same name and the Norse mythological god of thunder.</p>
+    </div>
+</div>
+<div class="footer">
+    <p>&copy; MCU all right reserved  | Designed By Sakeeb</p>  
+</div>
 </body>
 </html>
