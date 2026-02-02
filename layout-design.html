@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #020c19;
+            color: whitesmoke;
+        }
+
+        #d1 {
+            display: flex;
+            justify-content: space-evenly;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            width: 30%;
+            margin: 10px;
+            border-radius: 20px;
+            overflow: hidden;
+            background-color: #141e2b;
+        }
+
+        .card img {
+            width: 100%;
+        }
+
+        .featured {
+            position: absolute;
+            top: 0px;
+            right: 0px;
+            margin: 20px;
+            padding: 5px 20px;
+            border-radius: 5px;
+            background-color: #208bf4;
+        }
+
+        .featured-card {
+            position: relative;
+        }
+
+        @media screen and (max-width:1000px) and (min-width:801px) {
+            .card {
+                width: 40%;
+            }
+        }
+
+        @media screen and (max-width:800px) {
+            .card {
+                width: 80%;
+            }
+            .card h1{
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="d1">
+        <div class="card">
+            <div class="featured-card">
+                <img src="https://bootstrapmade.com/content/demo/Forma/assets/img/portfolio/portfolio-1.webp" alt="">
+                <div class="featured">Featured</div>
+            </div>
+            <h1>Chiranjeevi</h1>
+        </div>
+        <div class="card">
+            <img src="https://bootstrapmade.com/content/demo/Forma/assets/img/portfolio/portfolio-3.webp" alt="">
+            <h1>Srinivas</h1>
+        </div>
+        <div class="card">
+            <img src="https://bootstrapmade.com/content/demo/Forma/assets/img/portfolio/portfolio-5.webp" alt="">
+            <h1>Praveen</h1>
+        </div>
+    </div>
+</body>
+
+</html>
