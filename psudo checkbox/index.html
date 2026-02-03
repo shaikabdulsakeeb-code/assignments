@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #d1{
+            display: none;
+        }
+        .l{
+            display: none;
+        }
+        #d2:checked~.l{
+            display: inline;
+        }
+        #d2:checked~#d1{
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <button id="sh">show</button>
+    <input type="checkbox" id="d2">
+    <label class="l" for="d2">Click me</label>
+    <h1 id="d1">Hello Checkbox you are on</h1>
+</body>
+
+</html>
